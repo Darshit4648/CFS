@@ -62,12 +62,12 @@
 
       <div class="form-group">
         <label>Mobile Number:</label>
-        <input type="text" class="form-control"  name="txtmobno" placeholder="Enter your Material Name" value="<?php echo $mobno; ?>" required>
+        <input type="text" class="form-control"  name="txtmobno" placeholder="Enter your Material Name" value="<?php echo $mobno; ?>" maxlength="10" required>
       </div>
 
        <div class="form-group">
         <label>Email:</label>
-        <input type="text" class="form-control"  name="txtemail" placeholder="Enter your Material Name" value="<?php echo $email; ?>" required>
+        <input type="email" class="form-control"  name="txtemail" placeholder="Enter your Material Name" value="<?php echo $email; ?>" required>
       </div>
 
        <div class="form-group">
@@ -81,7 +81,7 @@
         <div class="col-sm-12" align="center">
           <input type="submit" class="btn btn-primary" value="Update">
   
-          <input type="submit" class="btn btn-danger " value="cancle">
+           <a href="companyupdate.php" class="btn btn-danger" role="button" >Cancle </a>
         </div>
       </div>
     </form>     

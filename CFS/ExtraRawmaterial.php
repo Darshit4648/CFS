@@ -1,6 +1,18 @@
 <?php
      include("header.php");
+     include("connect.php");
 ?>
+<script>
+           function multiply() {
+				  a = Number(document.getElementById('quanid').value);
+				  b = Number(document.getElementById('quanprice').value);
+				  c = a * b;
+                 
+				  document.getElementById('quantotprice').value = c;
+}
+
+</script>
+
 <div class="container-fluid" >
 
 	<div class="jumbotron col-md-offset-3 col-md-6 col-md-offset-3" >
@@ -26,9 +38,9 @@
 				 <select class="form-control" name="txtcid" >
 				 <option>select</option>
 				  <?php
-				         include("connect.php");
+				          include("connect.php");
 				         $f_id=$_COOKIE["f_id"];
-				          $qry="select * from acceptreq where f_id='$f_id'"; 
+				          $qry="select * from acceptreq where f_id='$f_id' && respondstatus=1"; 
 				          $rs=mysqli_query($con,$qry);
 
                           //echo $qry;
@@ -51,12 +63,12 @@
            
           <div class="form-group">
 				<label>Date:</label>
-				<input type="Date" class="form-control" id="quan" name="txtdate" placeholder="Enter Date" required>
+				<input type="Date" class="form-control"  name="txtdate" placeholder="Enter Date" required>
 			</div>
  
 			<div class="form-group">
 				<label>Material Type:</label>
-				 <select class="form-control" name="txtmtype">
+				 <select class="form-control" name="txtmtype" required>
 				    <option>select</option>
 			        <option>Seed</option>
 			        <option>Fertilizers</option>
@@ -70,14 +82,24 @@
 			
 			<div class="form-group">
 				<label>quantity(per Bag):</label>
-				<input type="number" class="form-control" id="quan" name="txtquant" placeholder="Enter Quantity of Material" required>
+				<input type="number" class="form-control" id="quanid" name="txtquant" placeholder="Enter Quantity of Material" required>
+			</div>
+
+			<div class="form-group">
+				<label>Unit price(per Bag):</label>
+				<input type="text" class="form-control" id="quanprice" onKeyUp="multiply()" name="txtquantprice" placeholder="Enter Unit Price of Material" required>
+			</div>
+
+			<div class="form-group">
+				<label>Total Price:</label>
+				<input type="text" class="form-control" id="quantotprice" name="txtquanttotprice" placeholder="Enter Total Price of Material" readonly required>
 			</div>
 
 			<div class="form-group" >
 				<div class="col-sm-12" align="center">
 					<input type="submit" class="btn btn-primary" value="Submit">
 	
-					<input type="submit" class="btn btn-danger " value="cancle">
+					 <a href="ExtraRawmaterial.php" class="btn btn-danger" role="button" >Cancle </a>
 				</div>
 			</div>
 		</form>			

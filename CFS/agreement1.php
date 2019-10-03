@@ -2,16 +2,19 @@
       include("connect.php");
       define('FPDF_FONTPATH','tfpdf/font');
 
-require('tfpdf.php');
+      require('tfpdf.php');
 
-    $f_id=$_GET["f_id"];
+    $f_id=$_GET["f_id"];         
 
-    $qry="update acceptreq set notification=1 where f_id= '$f_id'";
+    $qry="update acceptreq set notification=2 where f_id= '$f_id'";
     $rs1=mysqli_query($con,$qry);
+    
+
 
     $sql="SELECT * FROM farmer INNER JOIN    acceptreq ON acceptreq.f_id = farmer.f_id INNER JOIN company ON company.c_id=acceptreq.c_id where acceptreq.f_id='$f_id'";
     $rs=mysqli_query($con,$sql);
-      
+     $today = date("d/m/Y"); 
+
    
     while($data=mysqli_fetch_assoc($rs))
     {
@@ -41,7 +44,9 @@ require('tfpdf.php');
      		 $this->SetFont('Arial','B',19);
      		 $this->Ln();
      		 //$this->SetFont('Times','',12);
-     		 $this->Cell(190,20,'Contract Farming Agreement',30,20,'C');
+     		 $this->Cell(190,20,'Contract Farming Agreement',20,10,'C');
+         $this->Image('image/contract farming.png',5,15,40,20);
+         $this->Image('image/contract farming.png',160,15,40,20);
      	}
      	function footer(){
      		$this->SetY(-15);
@@ -62,6 +67,12 @@ $pdf->Cell(20,6,'company Details : ',2,0,'B',0);
 
 $pdf->SetFillColor(232,232,232);
 $pdf->SetFont('Arial','B',14);
+$pdf->SetY(35);
+$pdf->SetX(150);
+$pdf->Cell(20,6,'Date :',2,0,'B',0);
+
+$pdf->SetFillColor(232,232,232);
+$pdf->SetFont('Arial','B',14);
 $pdf->SetY(92);
 $pdf->SetX(80);
 $pdf->Cell(20,6,'Farmer Details : ',2,0,'B',0);
@@ -76,7 +87,7 @@ $pdf->SetFillColor(232,232,232);
 $pdf->SetFont('Arial','B',14);
 $pdf->SetY(235);
 $pdf->SetX(10);
-$pdf->Cell(20,6,'Farmer Sign:______________________',2,0,'B',0);
+$pdf->Cell(20,6,'Farmer Sign:__________________________________',2,0,'B',0);
 
 $pdf->SetFillColor(232,232,232);
 $pdf->SetFont('Arial','B',14);
@@ -142,6 +153,12 @@ $pdf->Cell(20,6,'Contract Accepted Date And Time : ',2,0,'B',0);
 
 $pdf->Ln();
 
+
+$pdf->SetFont('Arial','B',14);
+$pdf->SetY(35);
+$pdf->SetX(170);
+$pdf->Cell(20,6,$today,2,0,'B',0);
+
 $pdf->SetFont('Arial','',12);
 $pdf->SetY(50);
 $pdf->SetX(51);
@@ -196,3 +213,4 @@ $pdf->SetX(95);
 $pdf->Cell(20,6,$dtime,2,0,'B',0);
 $pdf->Output();
 ?>
+

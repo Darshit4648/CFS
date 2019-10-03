@@ -1,4 +1,4 @@
- 
+                                                     ; 
 <?php
       include('connect.php');
       $data = $_GET['datavalue'];
@@ -31,7 +31,7 @@
            return $angle * $earthRadius;
        } 
        $distance = getDistance($latitude1,$longitude1,$latitude2,$longitude2);
-         //$distance=0; 
+         
        $dis=round($distance,2);
 
              echo "<div class='form-group'>";

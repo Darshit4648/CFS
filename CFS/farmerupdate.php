@@ -47,7 +47,7 @@
 
       <div class="form-group">
         <label>Mobile Number:</label>
-        <input type="text" class="form-control"  name="txtfmobno" placeholder="Enter your Material Name" value="<?php echo $mobno; ?>" required>
+        <input type="text" class="form-control"  name="txtfmobno" placeholder="Enter your Material Name" value="<?php echo $mobno; ?>" maxlength="10" required>
       </div>
 
       <div class="form-group">
@@ -61,7 +61,7 @@
         <div class="col-sm-12" align="center">
           <input type="submit" class="btn btn-primary" value="Update">
   
-          <input type="submit" class="btn btn-danger " value="cancle">
+          <a href="farmerupdate.php" class="btn btn-danger" role="button" >Cancle </a>
         </div>
       </div>
     </form>     

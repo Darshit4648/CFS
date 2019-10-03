@@ -60,11 +60,68 @@
            
         }
         </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAP9VOU7YA6yBwmW2ivYgj2reFP7u9Iz70&callback=initMap"
-        async defer></script>
+        <script src="http://maps.google.com/maps/api/js?sensor=false&callback=initMap"
+        async defer type="text/javascript">
+  </script>
+       
+
+<script>
+  $("#adressid").click(function(){
+  alert();
+});
 </script>
-<?php 
-?>
+
+<script type="text/javascript">
+
+  function change_district()
+  {
+    var id =$('#districtID').val();
+
+
+    var request = $.ajax({
+      url: "FarmerReg1.php",
+      type: "GET",
+      data: {district : id},
+      dataType: "html"
+    });
+
+    request.done(function(msg) {
+      $("#talukaID").html("");
+      $("#talukaID").html(msg);        
+    });
+
+    request.fail(function(jqXHR, textStatus) {
+      alert( "Request failed: " + textStatus );
+    });
+  }
+
+
+
+  function change_village()
+  {
+    var tid =$('#talukaID').val();
+    var did =$('#districtID').val();
+    
+
+    var request = $.ajax({
+      url: "talukaajax.php",
+      type: "GET",
+      data: {taluka : tid,district:did},
+      dataType: "html"
+    });
+   //alert(tid);
+
+    request.done(function(msg) {
+      $("#villageID").html("");
+      $("#villageID").html(msg);        
+    });
+
+    request.fail(function(jqXHR, textStatus) {
+      alert( "Request failed: " + textStatus );
+    });
+  }
+</script>
+
 
 <div class="offset-md-4 jumbotron offset-md-4">
 <div class="container-fluid">
@@ -80,26 +137,48 @@
 
 <div class="form-group">
 <label>Company Name:</label>
-<input type=text class="form-control"  name=txtcname placeholder="Enter Your Company Name"  required>
+<input type=text class="form-control"  name=txtcname placeholder="Enter Your Company Name"  required >
 </div>
 
 <div class="form-group">
             <label>Company Supervisor Name:</label>
             <input type=text  class="form-control"  name=txtsname placeholder="Enter Your name" required>
                 </div>
-
-              <!--  <p id="latclicked" ></p>
-              <p id="longclicked"></p> 
-              -->
               <div class="form-group">
-            <label>City:</label>
-            <input type=text  class="form-control"  name=txtcity placeholder="Enter Your name" required>
-                </div>
+        <label>City:</label>
+        <select class="form-control"  id="districtID" name="txtcity" onchange="change_district()" required>
+          <option selected value="0">select</option>
+          <?php
+          include("connect.php");
+           $qry="select * from city";
+           $rs=mysqli_query($con,$qry);
+          echo $qry;
+           while($data=mysqli_fetch_assoc($rs))
+           {
+             echo "<option value='".$data["c_id"]."'>".$data["cityname"]."</option>";
+          
+           }
+          ?>
+        </select>
+      </div>
+
+       <div class="form-group">
+      <label>Taluka:</label>
+       <select class="form-control" id="talukaID" name="txttaluka" onchange="change_village()" required>
+         <option value="">Select</option>
+       </select>
+      </div>
+    
+    <div class="form-group">
+      <label>Villages:</label>
+       <select class="form-control" id="villageID" name="txtvillage" required>
+         <option value="">Select</option>
+       </select>
+      </div>
 
                <input type="hidden" name="lat" id="latclicked" value="">
                <input type="hidden" name="long" id="longclicked" value=""> 
-               <!--  <div id="latclicked"></div>
-              <div id="longclicked"></div> -->
+             
           <div>
             <div id="map" class="form-control"  style="height: 300px;width:300px"></div>
         </div>
@@ -107,23 +186,23 @@
 
                 <div class="form-group">
             <label>Address:</label>
-            <input type=text class="form-control" name=txtaddress placeholder="Enter Your Address" required>
+            <input type=text class="form-control" name=txtaddress id="adressid" placeholder="Enter Your Address" required>
                 </div>
 
                  <div class="form-group">
             <label>Mobile Number:</label>
-            <input type=text id="" class="form-control" name=txtmobno placeholder="Enter Your mobile Number" required>
+            <input type=text  class="form-control" name=txtmobno id="mob" placeholder="Enter Your mobile Number" maxlength=10 required title="please enter valid mobile number maximum 10 digits">
                 </div>
                 
                 <div class="form-group">
                     <label>Email:</label>
-                <input type=text  class="form-control" name=txtemail placeholder="Enter Your Email" required>
+                <input type=email  class="form-control" name=txtemail id="emailid" placeholder="Enter Your Email" required>
                         </div>
                         
                         
                         <div class="form-group">
                     <label>Username:</label>
-                <input type=text  class="form-control" name=txtusername placeholder="Enter Your Username"  required>
+                <input type=text  class="form-control" name=txtusername placeholder="Enter Your Username"  required pattern="[a-z]{1,15}">
                         </div>
 
                 <div class="form-group">
@@ -141,12 +220,12 @@
             </div>
                     
 </form>
-
+</div>
+</div>
 </div>
 </div>
 
-</div>
-</div>
+
 <?php
 include_once("footer.php");
 ?>

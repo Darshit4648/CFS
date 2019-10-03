@@ -28,7 +28,7 @@
 				  <?php
 				         include("connect.php");
 				         $f_id=$_COOKIE["f_id"];
-				          $qry="select * from acceptreq where f_id='$f_id'"; 
+				          $qry="select * from acceptreq where f_id='$f_id' && respondstatus=1"; 
 				          $rs=mysqli_query($con,$qry);
 
                           //echo $qry;
@@ -57,7 +57,7 @@
 				<div class="col-sm-12" align="center">
 					<input type="submit" class="btn btn-primary" value="Submit">
 	
-					<input type="submit" class="btn btn-danger " value="cancle">
+					 <a href="totalproduction.php" class="btn btn-danger" role="button" >Cancle </a>
 				</div>
 			</div>
 			</form>

@@ -3,7 +3,7 @@
          include("connect.php");
          $f_id=$_COOKIE["f_id"];
 
-         $qry="SELECT farmer.fname,farmsalary.totincome,farmsalary.date FROM farmer INNER JOIN 	farmsalary ON farmsalary.f_id = farmer.f_id  where farmsalary.f_id='$f_id' && farmsalary.status=0";
+         $qry="SELECT farmer.fname,farmsalary.totincome,farmsalary.date,farmsalary.f_notification FROM farmer INNER JOIN 	farmsalary ON farmsalary.f_id = farmer.f_id  where farmsalary.f_id='$f_id' && farmsalary.status=0";
          $rs=mysqli_query($con,$qry);
 
          
@@ -23,19 +23,33 @@
              $rs2=mysqli_query($con,$qry3);
              $data3=mysqli_fetch_assoc($rs2);
             echo"<tbody><tr>";
-                    echo"<td>".$data3["companyname"]."</td>";
-					echo"<td>".$data1["fname"]."</td>";
-					echo"<td>".$data1["totincome"]."</td>";
-					 echo"<td>".substr($data1["date"], 8,2)."-".substr($data1["date"], 5,2)."-".substr($data1["date"], 0,4)."</td>";
-                     
-					 //echo"<td>".$row1["address"]."</td>";
-					 echo"<td><a href='farmsalaryacpt.php?'>Accept</a></td>";
-				      echo"<td><a href='farmsalaryrej.php'>Reject</a></td>";
+                    echo"<td style='vertical-align :middle;'>".$data3["companyname"]."</td>";
+					echo"<td style='vertical-align :middle;'>".$data1["fname"]."</td>";
+					echo"<td style='vertical-align :middle;'>".$data1["totincome"]."</td>";
+					 echo"<td style='vertical-align :middle;'>".substr($data1["date"], 8,2)."-".substr($data1["date"], 5,2)."-".substr($data1["date"], 0,4)."</td>";
+					 echo"<td style='vertical-align :middle;'><a href='farmsalaryacpt.php?'>Accept</a></td>";
+				      echo"<td style='vertical-align :middle;'><a href='farmsalaryrej.php'>Reject</a>";
+                        if ($data1["f_notification"]==0) 
+                      {
+                             echo "<img src='image/giphy.gif' width='30px' height='50px'>";
+                      }
+                      echo "</td>";
 					 echo"</tbody></tr>";
       }      
       echo "</table>";
+
+      $qry4="update farmsalary set  f_notification=1 where f_id='$f_id'";
+      $ab=mysqli_query($con,$qry4);
    
 ?>
+<script>
+   $(window).bind("load",function(){
+       
+      
+        $("#fsalary").text('0');
+   });
+
+</script>
 <?php
     include("footer.php");
 ?>

@@ -1,11 +1,8 @@
-
 <?php
      include("connect.php");
      include("header.php");
-     //include("header.php");
       $city=$_COOKIE["city"];
       $c_id=$_COOKIE["c_id"];
-      //echo $city;
       $qry="SELECT * FROM farmer INNER JOIN    acceptreq ON acceptreq.f_id = farmer.f_id  where farmer.city='$city' && acceptreq.respondstatus='1' ";
       $rs=mysqli_query($con,$qry);  
 ?>
@@ -13,10 +10,11 @@
  <html>
 <head>
   
-  <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+  <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript">
+  </script>
  </head>
 <body>
-  <div id="map" style="height: 400px; width: 500px;">
+  <div id="map" style="height: 400px; width: 1000px; padding-bottom: 15px">
 </div>
 <script type="text/javascript">
     var locations = [

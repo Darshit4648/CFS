@@ -37,21 +37,19 @@
 				<select class="form-control" id="txtfarmer" name="txtfid" onchange="Myfun(this.value)">
 					<option selected >select</option>
 					<?php
-					include("connect.php");
-					$c_id=$_COOKIE["c_id"];
-					$qry="select * from acceptreq where c_id='$c_id'"; 
-					$rs=mysqli_query($con,$qry);
+							include("connect.php");
+							$c_id=$_COOKIE["c_id"];
+							$qry="select * from acceptreq where c_id='$c_id' && respondstatus=1"; 
+							$rs=mysqli_query($con,$qry);
 
-                          //echo $qry;
+           
 					while($data=mysqli_fetch_assoc($rs))
 					{     
-						$f_id=$data["f_id"];
-                           	  //echo $f_id;
-						$qry1="select * from farmer where f_id='$f_id'"; 
-                           	 // echo $qry1;
+						$f_id=$data["f_id"];   	 
+						$qry1="select * from farmer where f_id='$f_id'";
 						$rs1=mysqli_query($con,$qry1);
 						$data1=mysqli_fetch_assoc($rs1);
-                                    //echo $data1["fname"];                            
+                                                               
 						echo "<option value='".$data["f_id"]."'>".$data1["fname"]."</option>";
 					}   
 
@@ -75,12 +73,12 @@
 				<div class="col-sm-12" align="center">
 					<input type="submit" class="btn btn-primary" value="Submit">
 	
-					<input type="submit" class="btn btn-danger " value="cancle">
-				</div>
+					 <a href="transportcharges.php" class="btn btn-danger" role="button" >Cancle </a>
 			</div>
 
 		</form>
 	</div>
+</div>
 </div>
 <?php
 include("footer.php");

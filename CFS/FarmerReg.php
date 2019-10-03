@@ -59,11 +59,68 @@
            
         }
         </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAP9VOU7YA6yBwmW2ivYgj2reFP7u9Iz70&callback=initMap"
-        async defer></script>
+        <script src="http://maps.google.com/maps/api/js?sensor=false&callback=initMap"
+        async defer type="text/javascript">
+  </script>
 </script>
-<?php 
-?>
+
+<script>
+  $('#fnameid').click(function(){
+  alert();
+});
+</script>
+
+
+<script type="text/javascript">
+
+  function change_district()
+  {
+    var id =$('#districtID').val();
+
+
+    var request = $.ajax({
+      url: "FarmerReg1.php",
+      type: "GET",
+      data: {district : id},
+      dataType: "html"
+    });
+
+    request.done(function(msg) {
+      $("#talukaID").html("");
+      $("#talukaID").html(msg);        
+    });
+
+    request.fail(function(jqXHR, textStatus) {
+      alert( "Request failed: " + textStatus );
+    });
+  }
+
+
+
+  function change_village()
+  {
+    var tid =$('#talukaID').val();
+    var did =$('#districtID').val();
+    
+
+    var request = $.ajax({
+      url: "talukaajax.php",
+      type: "GET",
+      data: {taluka : tid,district:did},
+      dataType: "html"
+    });
+   //alert(tid);
+
+    request.done(function(msg) {
+      $("#villageID").html("");
+      $("#villageID").html(msg);        
+    });
+
+    request.fail(function(jqXHR, textStatus) {
+      alert( "Request failed: " + textStatus );
+    });
+  }
+</script>
 
 <div class="offset-md-4 jumbotron offset-md-4">
 <div class="container-fluid">
@@ -71,7 +128,7 @@
 
 <div class="row">
 <div class="center-block">
-   <h3 class="col-md-5 col-md-offset-4">Farmer Registration </h3>
+   <h3 class="col-md-5 col-md-offset-4">Farmer Registration</h3>
 </div>
 </div>
 <div class="row">
@@ -79,21 +136,43 @@
 
 <div class="form-group">
 <label>Farmer Name:</label>
-<input type=text class="form-control"  name=txtfname placeholder="Enter Your Name"  required>
+<input type=text class="form-control" id="fnameid"  name=txtfname placeholder="Enter Your Name"  required>
 </div>
 
 <div class="form-group">
-            <label>City:</label>
-            <input type=text  class="form-control"  name=txtcity placeholder="Enter Your City" required>
-                </div>
+        <label>City:</label>
+        <select class="form-control"  id="districtID" name="txtfcity" onchange="change_district()" required>
+          <option selected value="0">select</option>
+          <?php
+          include("connect.php");
+           $qry="select * from city";
+           $rs=mysqli_query($con,$qry);
+          echo $qry;
+           while($data=mysqli_fetch_assoc($rs))
+           {
+             echo "<option value='".$data["c_id"]."'>".$data["cityname"]."</option>";
+          
+           }
+          ?>
+        </select>
+      </div>
+      <div class="form-group">
+      <label>Taluka:</label>
+       <select class="form-control" id="talukaID" name="txttaluka" onchange="change_village()" required>
+         <option value="">Select</option>
+       </select>
+      </div>
 
-              <!--  <p id="latclicked" ></p>
-              <p id="longclicked"></p> 
-              -->
+       <div class="form-group">
+      <label>Villages:</label>
+       <select class="form-control" id="villageID" name="txtvillage" required>
+         <option value="">Select</option>
+       </select>
+      </div>
+              
                <input type="hidden" name="lat" id="latclicked" value="">
                <input type="hidden" name="long" id="longclicked" value=""> 
-               <!--  <div id="latclicked"></div>
-              <div id="longclicked"></div> -->
+              
           <div>
             <div id="map" class="form-control" style="height: 300px;width:300px"></div>
         </div>
@@ -101,7 +180,7 @@
 
                 <div class="form-group">
             <label>Farm Area (In Hector):</label>
-            <input type=text class="form-control" name=txtfarmarea placeholder="Enter Your FarmArea" required>
+            <input type=text class="form-control area"  name=txtfarmarea placeholder="Enter Your FarmArea" required>
                 </div>
 
                 
@@ -113,7 +192,7 @@
                         
                         <div class="form-group">
                     <label>Moblie Number:</label>
-                <input type=text  class="form-control" name=txtmobno placeholder="Enter Your Moblie Number"  required>
+                <input type=text  class="form-control" id="mobid" name=txtmobno placeholder="Enter Your Moblie Number"  required>
                         </div>
 
 

@@ -2,21 +2,23 @@
           include("connect.php");
 
         $fname=$_POST["txtfname"];
-        $city=$_POST["txtcity"];
+        $city=$_POST["txtfcity"];
         $latitude=$_POST["lat"];
         $longitude=$_POST["long"];
         $farmarea=$_POST["txtfarmarea"];
-        $cprice=$_POST["txtcontractprice"];
+       // $cprice=$_POST["txtcontractprice"];
         $surveyno=$_POST["txtsurveyno"];
         $mobno=$_POST["txtmobno"];
         $cropname=$_POST["txtcname"];
         $harprice=$_POST["txtharprice"];
         $uname=$_POST["txtuname"];
         $password=$_POST["txtpassword"];
+        $taluka=$_POST["txttaluka"];
+        $village=$_POST["txtvillage"];
 
        
 
-         $qry="insert into farmer(fname,city,latitude,longitude,farmarea,surveyno,mobno,cropname,harvestingprice,uname,password)values('$fname','$city','$latitude','$longitude','$farmarea','$surveyno','$mobno','$cropname','$harprice','$uname','$password')";
+         $qry="insert into farmer(fname,city,taluka,village,latitude,longitude,farmarea,surveyno,mobno,cropname,harvestingprice,uname,password)values('$fname','$city','$taluka','$village','$latitude','$longitude','$farmarea','$surveyno','$mobno','$cropname','$harprice','$uname','$password')";
 
           if (mysqli_query($con, $qry)) {
                echo "New record created successfully";

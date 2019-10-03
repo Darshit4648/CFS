@@ -39,10 +39,10 @@ include("header.php");
 					<?php
 					include("connect.php");
 					$c_id=$_COOKIE["c_id"];
-					$qry="select * from acceptreq where c_id='$c_id'"; 
+					$qry="select * from acceptreq where c_id='$c_id' && respondstatus=1"; 
 					$rs=mysqli_query($con,$qry);
 
-                          //echo $qry;
+                          
 					while($data=mysqli_fetch_assoc($rs))
 					{     
 						$f_id=$data["f_id"];
