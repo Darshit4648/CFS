@@ -120,9 +120,7 @@ $(document).ready(function() {
                 <div class="row">
                     <h2 class="h1-responsive font-weight-bold my-5">About Contract Farming</h2>
                 </div>
-                <div class="row">
-                    
-                </div>
+                
                 <div class="row">
                 <blockquote class="blockquote text-left">
                     <p >
@@ -222,13 +220,13 @@ $(document).ready(function() {
   <div id="map" ></div> 
   <script> 
   function initMap() { 
-    var uluru = {lat: 22.533656,  lng: 72.970049}; 
+    var ab = {lat: 22.533656,  lng: 72.970049}; 
     var map = new google.maps.Map(document.getElementById('map'), { 
     zoom: 4, 
-    center: uluru 
+    center: ab 
     }); 
     var marker = new google.maps.Marker({ 
-    position: uluru, 
+    position: ab, 
     map: map 
     }); 
   } 

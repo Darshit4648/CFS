@@ -121,6 +121,73 @@
     });
   }
 </script>
+<script>
+  function ValidateName() {
+        var isValid = false;
+        var regex = /^[a-zA-Z][a-zA-Z ]+$/;
+        isValid = regex.test(document.getElementById("fnameid").value);
+        document.getElementById("spnErrorName").style.display = !isValid ? "block" : "none";
+        return isValid;
+    }
+
+     function ValidateFarea() {
+        var isValid = false;
+        var regex = /^[0-9]+$/;
+        isValid = regex.test(document.getElementById("fareaid").value);
+        document.getElementById("spnErrorFarea").style.display = !isValid ? "block" : "none";
+        return isValid;
+    }
+    function ValidatePhn() {
+        var isValid = false;
+        var regex = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/;
+        isValid = regex.test(document.getElementById("mobid").value);
+        document.getElementById("spnErrorPhn").style.display = !isValid ? "block" : "none";
+        return isValid;
+    }
+
+    function ValidateCropname() {
+        var isValid = false;
+        var regex = /^[a-zA-Z ]+$/;
+        isValid = regex.test(document.getElementById("cropid").value);
+        document.getElementById("spnErrorCropname").style.display = !isValid ? "block" : "none";
+        return isValid;
+    }
+
+    function ValidateHprice() {
+        var isValid = false;
+        var regex = /^[0-9]+$/;
+        isValid = regex.test(document.getElementById("hprice").value);
+        document.getElementById("spnErrorHprice").style.display = !isValid ? "block" : "none";
+        return isValid;
+    }
+    function ValidateUsername() {
+        var isValid = false;
+        var regex = /^[a-zA-Z0-9_-]{6,14}$/;
+        isValid = regex.test(document.getElementById("userid").value);
+        document.getElementById("spnErrorUsername").style.display = !isValid ? "block" : "none";
+        return isValid;
+    }
+
+    function ValidateFpwd() {
+        var isValid = false;
+        var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+        isValid = regex.test(document.getElementById("fpwd").value);
+        document.getElementById("spnErrorFpwd").style.display = !isValid ? "block" : "none";
+        return isValid;
+    }
+
+     function validateForm() {
+    if( ( $("#spnErrorName").css('display') == 'none' || $("#spnErrorName").css("visibility") == "hidden")&&( $("#spnErrorFarea").css('display') == 'none' || $("#spnErrorFarea").css("visibility") == "hidden")&&( $("#spnErrorPhn").css('display') == 'none' || $("#spnErrorPhn").css("visibility") == "hidden")&&( $("#spnErrorCropname").css('display') == 'none' || $("#spnErrorCropname").css("visibility") == "hidden")&&( $("#spnErrorHprice").css('display') == 'none' || $("#spnErrorHprice").css("visibility") == "hidden")&&( $("#spnErrorUsername").css('display') == 'none' || $("#spnErrorUsername").css("visibility") ==  "hidden")&&( $("#spnErrorFpwd").css('display') == 'none' || $("#spnErrorFpwd").css("visibility") == "hidden"))
+    {
+
+    }
+    else
+    {
+      return false;
+    }
+
+  }
+</script>
 
 <div class="offset-md-4 jumbotron offset-md-4">
 <div class="container-fluid">
@@ -136,7 +203,8 @@
 
 <div class="form-group">
 <label>Farmer Name:</label>
-<input type=text class="form-control" id="fnameid"  name=txtfname placeholder="Enter Your Name"  required>
+<input type=text class="form-control" id="fnameid"  name=txtfname placeholder="Enter Your Name"  onchange="return ValidateName(this)" required>
+<span id="spnErrorName" style="color: Red; display: none">*Valid characters: alphabetical only And maximum 80 characters are allowed.</span>
 </div>
 
 <div class="form-group">
@@ -180,7 +248,8 @@
 
                 <div class="form-group">
             <label>Farm Area (In Hector):</label>
-            <input type=text class="form-control area"  name=txtfarmarea placeholder="Enter Your FarmArea" required>
+            <input type=text class="form-control area"  name=txtfarmarea id="fareaid" maxlength="3" placeholder="Enter Your FarmArea" onchange="return ValidateFarea(this)" required>
+            <span id="spnErrorFarea" style="color: Red; display: none">*Valid characters: Only Numerical Numbers Are Allowed.</span>
                 </div>
 
                 
@@ -192,40 +261,43 @@
                         
                         <div class="form-group">
                     <label>Moblie Number:</label>
-                <input type=text  class="form-control" id="mobid" name=txtmobno placeholder="Enter Your Moblie Number"  required>
+                <input type=text  class="form-control" id="mobid" name=txtmobno placeholder="Enter Your Moblie Number" onchange="return ValidatePhn(this)" maxlength="10"   required>
+                 <span id="spnErrorPhn" style="color: Red; display: none">*Valid characters: Numbers only, 10 Digits are allowed And Number is an Indian Number allowed.</span>
                         </div>
 
 
 
                 <div class="form-group">
                 <label>Crop Name:</label>
-                <input type=text  class="form-control"  maxlength="10" name=txtcname  placeholder="Enter Your Cropname" required>
+                <input type=text  class="form-control"  maxlength="10" name=txtcname id="cropid" placeholder="Enter Your Cropname" onchange="return ValidateCropname(this)" required>
+                 <span id="spnErrorCropname" style="color: Red; display: none">*Valid characters: alphabetical only And maximum 80 characters are allowed.</span>
                 </div>
             
                 
                 <div class="form-group">
                 <label>Harvesting Price:</label>
-                <input type=text   class="form-control"  name=txtharprice placeholder="Enter Your Harvesting Price" required>
+                <input type=text   class="form-control" id="hprice" name=txtharprice placeholder="Enter Your Harvesting Price" maxlength="5" onchange="return ValidateHprice(this)"  required>
+                 <span id="spnErrorHprice" style="color: Red; display: none">*Valid characters: Only Numerical Numbers Are Allowed.</span>
                 </div>
                 
                 
                 <div class="form-group">
                 <label>Username:</label>
-                <input type=text class="form-control"  name=txtuname placeholder="Enter Your Username" required>
+                <input type=text class="form-control" id="userid"  name=txtuname placeholder="Enter Your Username" onchange="return ValidateUsername(this)"  required>
+                <span id="spnErrorUsername" style="color: Red; display: none">*Valid characters: Only Numerical Numbers Are Allowed.</span>
                 </div>
                 
                 <div class="form-group">
                 <label>password:</label>
-                <input type=password class="form-control"  name=txtpassword placeholder="Enter Your password" data-toggle="password" required>
-
+                <input type=password class="form-control" id="fpwd" name=txtpassword placeholder="Enter Your password" data-toggle="password" onchange="return ValidateFpwd(this)" required>
+                 <span id="spnErrorFpwd" style="color: Red; display: none">*At least 1 lowercase alphabetical character,1 uppercase alphabetical character, 1 numeric character, one special character And string must be eight characters or longer </span>
+  
                 </div>
     
-                
-                
-                
+                 
             <div class="form-group">
             <div class="col-sm-4">
-            <input type="submit" class="btn btn-primary" value="Submit ">
+             <button type="submit" name="submit" id="submit" class="btn btn-primary" onclick="return validateForm();">Submit</button>
             </div>
             <div class="col-sm-4">
             <a href="FarmerReg.php" class="btn btn-danger" role="button" >Cancle </a>
@@ -236,7 +308,6 @@
 
 </div>
 </div>
-
 </div>
 </div>
 <?php

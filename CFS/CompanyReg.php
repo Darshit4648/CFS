@@ -1,14 +1,37 @@
 <?php
      include_once("header.php");
 ?>
+ <script src="http://maps.google.com/maps/api/js?sensor=false&callback=initMap"
+        async defer type="text/javascript">
+  </script>
+ <!--  <script>
+    $("#villageID").change(function(){
+          $.ajax({
+              url: "maplocation.php",
+              type: "GET",
+              data:{
+                  "vid":$(this).val()
+              },
+              success: function(data){
+                  var res = $.parseJSON(data);
+                  // var lati=res.lat;
+                  // var longi=res.lon;
+                  alert(res.lat);
+                 //initMap(lati,longi);
+              },
+              error: function(error){
+                console.log(error);
+                alert('error;' + error.responseText);
+              }
 
+          });
+      });
+</script> -->
 <script>
-    
-        var map;
-        
-        function initMap() {                            
-            var latitude = 22.551720 ; // YOUR LATITUDE VALUE
-            var longitude = 72.950550; // YOUR LONGITUDE VALUE
+    var map;
+    function initMap() {           
+            var latitude = 22.535848; // YOUR LATITUDE VALUE
+            var longitude = 72.974756; // YOUR LONGITUDE VALUE
             
             var myLatLng = {lat: latitude, lng: longitude};
             
@@ -20,13 +43,13 @@
             
             // Update lat/long value of div when anywhere in the map is clicked    
             google.maps.event.addListener(map,'click',function(event) {                
-                document.getElementById('latclicked').innerHTML = event.latLng.lat();
-                document.getElementById('longclicked').innerHTML =  event.latLng.lng();
-                document.getElementById('latclicked').value =  event.latLng.lat();;
-                document.getElementById('longclicked').value =  event.latLng.lng();;
+              document.getElementById('latclicked').innerHTML = event.latLng.lat();
+              document.getElementById('longclicked').innerHTML =  event.latLng.lng();
+              document.getElementById('latclicked').value =  event.latLng.lat();;
+              document.getElementById('longclicked').value =  event.latLng.lng();;
             });
             
-                    
+
             var marker = new google.maps.Marker({
               position: myLatLng,
               map: map,
@@ -42,27 +65,25 @@
             
             
             google.maps.event.addListener(map,'dblclick',function(event) {
-                var marker = new google.maps.Marker({
-                  position: event.latLng, 
-                  map: map, 
-                  title: event.latLng.lat()+', '+event.latLng.lng()
-                });
-                
-                marker.addListener('click', function() {
-                  document.getElementById('latclicked').innerHTML = event.latLng.lat();
-                  document.getElementById('longclicked').innerHTML =  event.latLng.lng();
+              var marker = new google.maps.Marker({
+                position: event.latLng, 
+                map: map, 
+                title: event.latLng.lat()+', '+event.latLng.lng()
+              });
+
+              marker.addListener('click', function() {
+                document.getElementById('latclicked').innerHTML = event.latLng.lat();
+                document.getElementById('longclicked').innerHTML =  event.latLng.lng();
                    //document.getElementById('longclicked').value = "aa";
-                });            
+                 });            
             });
             var lat=  event.latLng.lat();;
-                
-           
-           
-        }
+
+
+
+          }
         </script>
-        <script src="http://maps.google.com/maps/api/js?sensor=false&callback=initMap"
-        async defer type="text/javascript">
-  </script>
+       
        
 
 <script>
@@ -121,8 +142,66 @@
     });
   }
 </script>
+<script>
+  function ValidateCname() {
+        var isValid = false;
+        var regex = /^[a-zA-Z][a-zA-Z ]+$/;
+        isValid = regex.test(document.getElementById("cnameid").value);
+        document.getElementById("spnErrorCname").style.display = !isValid ? "block" : "none";
+        return isValid;
+    }
 
+    function ValidateSname() {
+        var isValid = false;
+        var regex = /^[a-zA-Z][a-zA-Z ]+$/;
+        isValid = regex.test(document.getElementById("snameid").value);
+        document.getElementById("spnErrorSname").style.display = !isValid ? "block" : "none";
+        return isValid;
+    }
 
+     function ValidateCphn() {
+        var isValid = false;
+        var regex = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/;
+        isValid = regex.test(document.getElementById("phnid").value);
+        document.getElementById("spnErrorCphn").style.display = !isValid ? "block" : "none";
+        return isValid;
+    }
+
+function ValidateEmail() {
+        var isValid = false;
+        var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        isValid = regex.test(document.getElementById("emailid").value);
+        document.getElementById("spnErrorEmail").style.display = !isValid ? "block" : "none";
+        return isValid;
+    }
+ function ValidateCusername() {
+        var isValid = false;
+        var regex = /^[a-zA-Z0-9_-]{6,14}$/;
+        isValid = regex.test(document.getElementById("userid").value);
+        document.getElementById("spnErrorCusername").style.display = !isValid ? "block" : "none";
+        return isValid;
+    }
+     function ValidateCpwd() {
+        var isValid = false;
+        var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+        isValid = regex.test(document.getElementById("cpwd").value);
+        document.getElementById("spnErrorCpwd").style.display = !isValid ? "block" : "none";
+        return isValid;
+    }
+    function validateForm() {
+    if( ( $("#spnErrorCname").css('display') == 'none' || $("#spnErrorCname").css("visibility") == "hidden")&&( $("#spnErrorSname").css('display') == 'none' || $("#spnErrorSname").css("visibility") == "hidden")&&( $("#spnErrorCphn").css('display') == 'none' || $("#spnErrorCphn").css("visibility") == "hidden")&&( $("#spnErrorEmail").css('display') == 'none' || $("#spnErrorEmail").css("visibility") == "hidden")&&( $("#spnErrorCusername").css('display') == 'none' || $("#spnErrorCusername").css("visibility") == "hidden")&&( $("#spnErrorCpwd").css('display') == 'none' || $("#spnErrorCpwd").css("visibility") ==  "hidden"))
+    {
+
+    }
+    else
+    {
+      return false;
+    }
+
+  }
+</script>
+
+    
 <div class="offset-md-4 jumbotron offset-md-4">
 <div class="container-fluid">
 <form action="companyinsert.php" method="POST">
@@ -137,12 +216,16 @@
 
 <div class="form-group">
 <label>Company Name:</label>
-<input type=text class="form-control"  name=txtcname placeholder="Enter Your Company Name"  required >
+<input type=text class="form-control"  name=txtcname id="cnameid"  placeholder="Enter Your Company Name" onchange="return ValidateCname(this)"  required >
+<span id="spnErrorCname" style="color: Red; display: none">*Valid characters: alphabetical only And maximum 80 characters are allowed.</span>
+
 </div>
 
 <div class="form-group">
             <label>Company Supervisor Name:</label>
-            <input type=text  class="form-control"  name=txtsname placeholder="Enter Your name" required>
+            <input type=text  class="form-control"  id="snameid" name=txtsname placeholder="Enter Your name" onchange="return ValidateSname(this)"  required>
+            <span id="spnErrorSname" style="color: Red; display: none">*Valid characters: alphabetical only And maximum 80 characters are allowed.</span>
+            
                 </div>
               <div class="form-group">
         <label>City:</label>
@@ -186,33 +269,42 @@
 
                 <div class="form-group">
             <label>Address:</label>
-            <input type=text class="form-control" name=txtaddress id="adressid" placeholder="Enter Your Address" required>
+            <input type=text class="form-control" name=txtaddress id="adressid" placeholder="Enter Your Address"  required>
+           
+
                 </div>
 
                  <div class="form-group">
             <label>Mobile Number:</label>
-            <input type=text  class="form-control" name=txtmobno id="mob" placeholder="Enter Your mobile Number" maxlength=10 required title="please enter valid mobile number maximum 10 digits">
+            <input type=text  class="form-control" name=txtmobno id="phnid"  placeholder="Enter Your mobile Number" onchange="return ValidateCphn(this)" maxlength="10" required >
+            <span id="spnErrorCphn" style="color: Red; display: none">*Valid characters: Numbers only, 10 Digits are allowed And Number is an Indian Number allowed.</span>
+           
                 </div>
                 
                 <div class="form-group">
                     <label>Email:</label>
-                <input type=email  class="form-control" name=txtemail id="emailid" placeholder="Enter Your Email" required>
+                <input type=text  class="form-control" name=txtemail id="emailid" placeholder="Enter Your Email" onchange="return ValidateEmail(this)" required>
+                 <span id="spnErrorEmail" style="color: Red; display: none">*Valid characters: Numbers only, 10 Digits are allowed And Number is an Indian Number allowed.</span>
+                
                         </div>
                         
                         
                         <div class="form-group">
                     <label>Username:</label>
-                <input type=text  class="form-control" name=txtusername placeholder="Enter Your Username"  required pattern="[a-z]{1,15}">
+                <input type=text  class="form-control" name=txtusername id="userid" placeholder="Enter Your Username" onchange="return ValidateCusername(this)" required>
+                <span id="spnErrorCusername" style="color: Red; display: none">*Valid characters: Only Numerical Numbers Are Allowed.</span>
                         </div>
 
                 <div class="form-group">
                 <label>Password:</label>
-                <input type=password  class="form-control"  maxlength="10" name=txtpassword  placeholder="Enter Your Password" data-toggle="password" required>
+                <input type=password  class="form-control" id="cpwd"  name=txtpassword  placeholder="Enter Your Password" data-toggle="password"   onchange="return ValidateCpwd(this)" required>
+                <span id="spnErrorCpwd" style="color: Red; display: none">*At least 1 lowercase alphabetical character,1 uppercase alphabetical character, 1 numeric character, one special character And string must be eight characters or longer </span>
+                   
                 </div>
                 
             <div class="form-group">
             <div class="col-sm-4">
-            <input type="submit" class="btn btn-primary" value="Submit">
+            <button type="submit" name="submit" id="submit" class="btn btn-primary" onclick="return validateForm();">Submit</button>
             </div>
             <div class="col-sm-4">
             <a href="CompanyReg.php" class="btn btn-danger" role="button" >Cancle </a>
@@ -224,7 +316,6 @@
 </div>
 </div>
 </div>
-
 
 <?php
 include_once("footer.php");

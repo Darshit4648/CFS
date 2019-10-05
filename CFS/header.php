@@ -125,6 +125,14 @@
                                 $count4=mysqli_num_rows($rem2);
 
                                 echo "<li><a href='agreement.php' id='agreement' >Generate Agreement <sup><span class='badge badge-pill badge-success'><label id='agreeid'>".$count4."</label></span></sup> </a></li>";
+
+                                echo" <li class='dropdown'><a class='dropdown-toggle' data-toggle='dropdown' href='#'>ADD<span class='caret'></span></a>
+                          <ul class='dropdown-menu'>
+                            <li><a href='District.php'>Add District </a></li>
+                            <li><a href='Taluka.php'>Add Talukas</a></li>  
+                             <li><a href='Village.php'>Add Villages</a></li>           
+                          </ul>
+                        </li>";
  
                           }
                 ?>

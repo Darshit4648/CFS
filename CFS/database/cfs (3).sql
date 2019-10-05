@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2019 at 01:55 AM
+-- Generation Time: Oct 06, 2019 at 01:38 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -45,7 +45,7 @@ CREATE TABLE `acceptreq` (
 --
 
 INSERT INTO `acceptreq` (`ac_id`, `f_id`, `c_id`, `sdate`, `preagreedprice`, `message`, `respondstatus`, `updated_at`, `notification`) VALUES
-(78, 41, 14, '2019-10-04', '3000', '5 months.', 1, '04/10/2019 04:07:24', 1);
+(78, 41, 14, '2019-10-04', '3000', '5 months.', 1, '04/10/2019 04:07:24', 2);
 
 -- --------------------------------------------------------
 
@@ -87,7 +87,34 @@ INSERT INTO `city` (`c_id`, `cityname`) VALUES
 (3, 'baroda'),
 (4, 'gandhinagr'),
 (5, 'arvalli'),
-(6, 'surendranagr');
+(6, 'surendranagr'),
+(7, 'rajkot'),
+(8, 'junagadh'),
+(9, 'porbandar'),
+(10, 'amreli'),
+(11, 'kutch'),
+(12, 'sabarkatha'),
+(13, 'banaskatha'),
+(14, 'patan'),
+(15, 'mehsana'),
+(16, 'godhra'),
+(17, 'surat'),
+(18, 'navsari'),
+(19, 'morbi'),
+(20, 'botad'),
+(21, 'bahvnagar'),
+(22, 'jamnagar'),
+(23, 'kheda'),
+(24, 'valsad'),
+(25, 'dang'),
+(26, 'narmada'),
+(27, 'bharuch'),
+(28, 'dahod'),
+(29, 'girsomnath'),
+(30, 'mahisagr'),
+(31, 'tapi'),
+(32, 'devbhumi dwarka'),
+(33, 'panchmahal');
 
 -- --------------------------------------------------------
 
@@ -116,7 +143,10 @@ CREATE TABLE `company` (
 --
 
 INSERT INTO `company` (`c_id`, `companyname`, `companysname`, `city`, `taluka`, `village`, `latitude`, `longitude`, `address`, `mobno`, `email`, `username`, `password`) VALUES
-(14, 'Trinity Goodies', 'prabhas patel', '2', '3', '1', '22.93207646213821', '72.6931185232736', 'gidc ahmedabad 380061.', '9871235460', 'tankdarhit437@student.aau.in', 'prabhas', '1234');
+(14, 'Trinity Goodies', 'prabhas patel', '2', '3', '1', '22.93207646213821', '72.6931185232736', 'gidc ahmedabad 380061.', '9871235460', 'tankdarhit437@student.aau.in', 'prabhas', '1234'),
+(17, 'cottonservo', 'nigam patel', '2', '3', '1', '22.534500290369316', '72.9690348481713', 'gidc ahmedabad 380061.', '9825743215', 'tankdarhit437@student.aau.in', 'nigam', 'nigam@12'),
+(18, 'balaji', 'bhavya ', '1', '1', '3', '22.535372339279395', '72.96620243545158', 'gidc ANAND38001.', '9871235460', 'bhavychaudhary5@student.aau.in', 'bhavya', 'bhavya@12'),
+(19, 'tomato', 'bhavya ', '2', '3', '2', '22.531347410296863', '72.97531127929688', 'gidc chennai 380061.', '9898999678', 'tankdarhit437@student.aau.in', 'dars_28', 'Darshit@12');
 
 -- --------------------------------------------------------
 
@@ -153,6 +183,14 @@ CREATE TABLE `extramaterial` (
   `em_notification` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `extramaterial`
+--
+
+INSERT INTO `extramaterial` (`em_id`, `f_id`, `c_id`, `date`, `materialtype`, `materialname`, `quantity`, `unitprice`, `totalprice`, `respondstatus`, `em_notification`) VALUES
+(50, 41, 14, '2019-10-04', 'Seed', 'wheat seed', '3', '1200', '3600', 1, 1),
+(51, 41, 14, '2019-10-04', 'Fertilizers', 'Urea Super Granulated', '3', '1200', '3600', 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -183,8 +221,11 @@ CREATE TABLE `farmer` (
 --
 
 INSERT INTO `farmer` (`f_id`, `fname`, `city`, `taluka`, `village`, `latitude`, `longitude`, `farmarea`, `surveyno`, `mobno`, `cropname`, `harvestingprice`, `uname`, `password`, `status`, `fa_notification`) VALUES
-(41, 'darshit tank', '2', '4', '6', '22.55084805436544', '72.94397054128649', '3', '452/4', '7800361212', 'potato', '2000', 'darsh', '1234', 1, 1),
-(42, 'rupesh patel', '1', '1', '4', '22.55156146483995', '72.94491467885973', '4', '452/4', '9871235460', 'tomato', '2000', 'rupu', '1212', 0, 0);
+(41, 'darshit tank', '2', '4', '6', '22.55084805436544', '72.94397054128649', '3', '452/4', '7800361212', 'potato', '2000', 'darsh', 'darsh@123', 1, 1),
+(42, 'rupesh patel', '1', '1', '4', '22.55156146483995', '72.94491467885973', '4', '452/4', '9871235460', 'tomato', '2000', 'rupu', 'rupu@1234', 0, 0),
+(43, '1212', '1', '1', '4', '22.551482197191607', '72.94783292226793', '12a', '452/1', 'dsd', 'sdd', '20qq', 'asa', 'asa', 0, 0),
+(44, '1212', '3', '6', '23', '', '', '1as', '452/1', 'dsdss', 'sdd', '20qqs', 'asaa', 'asas', 0, 0),
+(45, 'aswq1', '2', '3', '1', '22.5506895182035', '72.94680295400622', 'qa', 'a', 'aaa', 'ssa2', 'aa', 'aa', 'aa', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -269,7 +310,43 @@ INSERT INTO `taluka` (`t_id`, `c_id`, `talukaname`) VALUES
 (11, 6, 'dhagndhra'),
 (12, 6, 'mooli'),
 (13, 5, 'modasa'),
-(14, 5, 'malpur');
+(14, 5, 'malpur'),
+(15, 7, 'jetpur'),
+(16, 2, 'daskori'),
+(17, 2, 'sanand'),
+(18, 2, 'dholka'),
+(19, 2, 'viramgam'),
+(20, 2, 'mandal'),
+(21, 2, 'detroj-rampara'),
+(22, 2, 'dholera'),
+(23, 2, 'dhaskoi'),
+(24, 1, 'khabhat'),
+(25, 1, 'umreth'),
+(27, 1, 'anklav'),
+(28, 1, 'tarapur'),
+(29, 3, 'waghodiya'),
+(30, 3, 'dabhoi'),
+(31, 3, 'padra'),
+(32, 3, 'karjan'),
+(33, 3, 'deser'),
+(34, 4, 'dehgam'),
+(35, 5, 'modasa'),
+(36, 5, 'meghraj'),
+(37, 5, 'dhansura'),
+(38, 5, 'bhiloda'),
+(39, 5, 'bayad'),
+(40, 6, 'halvad'),
+(41, 6, 'dassada'),
+(42, 6, 'lakhtar'),
+(43, 6, 'limbdi'),
+(44, 6, 'chuda'),
+(45, 6, 'sayla'),
+(46, 6, 'chotila'),
+(47, 7, 'jasdan'),
+(48, 7, 'dhoraji'),
+(49, 7, 'gondal'),
+(50, 7, 'lodhika'),
+(51, 8, 'manavadr');
 
 -- --------------------------------------------------------
 
@@ -284,6 +361,13 @@ CREATE TABLE `totalproduction` (
   `totalproduction` varchar(20) NOT NULL,
   `created_at` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `totalproduction`
+--
+
+INSERT INTO `totalproduction` (`pro_id`, `f_id`, `c_id`, `totalproduction`, `created_at`) VALUES
+(25, 41, 14, '12', '05/10/2019 11:46:12');
 
 -- --------------------------------------------------------
 
@@ -468,13 +552,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `city`
 --
 ALTER TABLE `city`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `companyaccount`
@@ -486,13 +570,13 @@ ALTER TABLE `companyaccount`
 -- AUTO_INCREMENT for table `extramaterial`
 --
 ALTER TABLE `extramaterial`
-  MODIFY `em_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `em_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `farmer`
 --
 ALTER TABLE `farmer`
-  MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `farmsalary`
@@ -516,13 +600,13 @@ ALTER TABLE `rawmaterial`
 -- AUTO_INCREMENT for table `taluka`
 --
 ALTER TABLE `taluka`
-  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `totalproduction`
 --
 ALTER TABLE `totalproduction`
-  MODIFY `pro_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `pro_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `transportcharges`
@@ -534,7 +618,7 @@ ALTER TABLE `transportcharges`
 -- AUTO_INCREMENT for table `villages`
 --
 ALTER TABLE `villages`
-  MODIFY `v_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `v_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Constraints for dumped tables
