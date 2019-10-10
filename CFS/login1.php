@@ -1,9 +1,13 @@
 	<?php
-
+     session_start();
 	include ("connect.php");
 
 	if(isset($_POST["submit"]))
-	{   
+	{           
+		        echo $capcha=$_POST["txtcaptcha"];
+		          $captcha_code=$_SESSION["captcha_code"];
+		        if($capcha == $captcha_code)
+		        {
 		        $flag=0;
 				$unm=$_POST["txtuname"];
 					$pwd=$_POST["txtpassword"];
@@ -79,6 +83,11 @@
 		              }  
 		               
 		                  
+}
+else
+{
+	header("location:login.php?tr=1");  
+}
 }
 
 	

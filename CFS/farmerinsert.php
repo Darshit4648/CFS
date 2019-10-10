@@ -1,6 +1,10 @@
 <?php
           include("connect.php");
+        session_start();
 
+
+        $captcha_code=$_SESSION["captcha_code"];
+        $captcha=$_POST["txtcaptcha"];
         $fname=$_POST["txtfname"];
         $city=$_POST["txtfcity"];
         $latitude=$_POST["lat"];
@@ -17,7 +21,8 @@
         $village=$_POST["txtvillage"];
 
        
-
+        if($captcha == $captcha_code)
+        {
          $qry="insert into farmer(fname,city,taluka,village,latitude,longitude,farmarea,surveyno,mobno,cropname,harvestingprice,uname,password)values('$fname','$city','$taluka','$village','$latitude','$longitude','$farmarea','$surveyno','$mobno','$cropname','$harprice','$uname','$password')";
 
           if (mysqli_query($con, $qry)) {
@@ -26,4 +31,9 @@
             } else {
                echo "Error: " . $qry . "" . mysqli_error($con);
             }
+          }
+          else
+          {
+                  header("location:FarmerReg.php?er=1"); 
+          }
 ?>

@@ -41,6 +41,17 @@ if(isset($_GET["errrr"]))
                                         </div>
                                     </div>";
                             }   
+                             if(isset($_GET["tr"]))
+                            {
+                                echo"<div class='col-md-4 col-md-offset-4'>
+                 <div class='form-group'>
+                                            <div class='alert alert-danger alert-dismissable fade in'>
+                                                <a href='#' class='close' data-dismiss='alert'>&times;</a>
+                                                                      Your captcha is invalid !!!
+                                            </div>
+                                        </div>
+                                    </div>";
+                            }   
 ?> 
         <div style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
             <div class="panel panel-info" >
@@ -66,7 +77,17 @@ if(isset($_GET["errrr"]))
 
                                     </div>
 
-                                <div style="margin-top:10px" class="form-group">
+                                  
+                                     <div class="form-group col-md-6">
+                                        
+                                <input  type="text" class="form-control" name="txtcaptcha" id="captchaid" placeholder="Enter Your Captcha" required>
+                                <br>
+                                </div>
+                                <div class="form-group col-md-6">
+                                 <img id="captcha_code" src="capcha.php" />
+                                 <span class="glyphicon glyphicon-refresh" id="refersh"> </span>
+                              </div>
+                                <div  class="form-group">
                                     <!-- Button -->
 
                                     <div class="col-sm-8 col-sm-offset-5">
@@ -74,21 +95,8 @@ if(isset($_GET["errrr"]))
                                       
                                     </div>
                                 </div>
-
-
-                               <!--  <div class="form-group">
-                                    <div class="col-md-12 control">
-                                        <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                                            Don't have an account! 
-                                        <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
-                                            Sign Up Here
-                                        </a>
-                                        </div>
-                                    </div>
-                                </div>    --> 
-                            </form>     
-
-
+                                
+                            </form>    
 
                         </div>                     
                     </div>  
@@ -97,7 +105,12 @@ if(isset($_GET["errrr"]))
                          </div>
                          
                 
-        
+   <script>
+      $('#refersh').click(function() {
+    $("#captcha_code").attr('src','capcha.php');
+});
+   </script> 
+
      <?php
     include_once("footer.php");
 ?>
