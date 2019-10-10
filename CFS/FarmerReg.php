@@ -50,7 +50,6 @@
                 marker.addListener('click', function() {
                   document.getElementById('latclicked').innerHTML = event.latLng.lat();
                   document.getElementById('longclicked').innerHTML =  event.latLng.lng();
-                   //document.getElementById('longclicked').value = "aa";
                 });            
             });
             var lat=  event.latLng.lat();;
@@ -189,25 +188,26 @@
   }
 </script>
 
-<div class="offset-md-4 jumbotron offset-md-4">
+
 <div class="container-fluid">
+<div class="jumbotron col-md-offset-2 col-md-8 col-md-offset-3">
 <form action="farmerinsert.php" method="POST">
 
 <div class="row">
 <div class="center-block">
-   <h3 class="col-md-5 col-md-offset-4">Farmer Registration</h3>
+   <h3 class="col-md-offset-4 col-md-6 col-md-offset-4">Farmer Registration</h3>
 </div>
 </div>
-<div class="row">
-<div class="col-md-4 col-md-4 col-md-offset-4">
 
+<div class="form-row">
 <div class="form-group">
 <label>Farmer Name:</label>
 <input type=text class="form-control" id="fnameid"  name=txtfname placeholder="Enter Your Name"  onchange="return ValidateName(this)" required>
 <span id="spnErrorName" style="color: Red; display: none">*Valid characters: alphabetical only And maximum 80 characters are allowed.</span>
 </div>
-
-<div class="form-group">
+</div>
+<div class="form-row">
+<div class="form-group col-md-4">
         <label>City:</label>
         <select class="form-control"  id="districtID" name="txtfcity" onchange="change_district()" required>
           <option selected value="0">select</option>
@@ -224,83 +224,95 @@
           ?>
         </select>
       </div>
-      <div class="form-group">
+      <div class="form-group  col-md-4">
       <label>Taluka:</label>
        <select class="form-control" id="talukaID" name="txttaluka" onchange="change_village()" required>
          <option value="">Select</option>
        </select>
       </div>
 
-       <div class="form-group">
+       <div class="form-group col-md-4">
       <label>Villages:</label>
        <select class="form-control" id="villageID" name="txtvillage" required>
          <option value="">Select</option>
        </select>
+      </div>
       </div>
               
                <input type="hidden" name="lat" id="latclicked" value="">
                <input type="hidden" name="long" id="longclicked" value=""> 
               
           <div>
-            <div id="map" class="form-control" style="height: 300px;width:300px"></div>
+            <div id="map" class="form-control" style="height: 300px;width:750px"></div>
         </div>
-       
+ 
+    <br>
+ <div class="form-row">      
+ <div class="form-group col-md-6">
+                    <label>Moblie Number:</label>
+                <input type=text  class="form-control" id="mobid" name=txtmobno placeholder="Enter Your Moblie Number" onchange="return ValidatePhn(this)" maxlength="10"   required>
+                
+                 <span id="spnErrorPhn" style="color: Red; display: none">*Valid characters: Numbers only, 10 Digits are allowed And Number is an Indian Number allowed.</span>
+                 
+                        </div>
 
-                <div class="form-group">
+
+
+       <div class="form-group col-md-6">
+                <label>Crop Name:</label>
+                <input type=text  class="form-control"  maxlength="10" name=txtcname id="cropid" placeholder="Enter Your Cropname" onchange="return ValidateCropname(this)" required>
+            
+                 <span id="spnErrorCropname" style="color: Red; display: none">*Valid characters: alphabetical only And maximum 80 characters are allowed.</span>
+                 </div>
+                 </div>
+               
+                 <br>
+                 
+                <div class="form-row">  
+                <div class="form-group col-md-4">
             <label>Farm Area (In Hector):</label>
             <input type=text class="form-control area"  name=txtfarmarea id="fareaid" maxlength="3" placeholder="Enter Your FarmArea" onchange="return ValidateFarea(this)" required>
             <span id="spnErrorFarea" style="color: Red; display: none">*Valid characters: Only Numerical Numbers Are Allowed.</span>
                 </div>
 
                 
-                <div class="form-group">
+                <div class="form-group col-md-4">
                     <label>Survey Number:</label>
                 <input type=text  class="form-control" name=txtsurveyno placeholder="Enter Your SurveyNumber" required>
                         </div>
                         
                         
-                        <div class="form-group">
-                    <label>Moblie Number:</label>
-                <input type=text  class="form-control" id="mobid" name=txtmobno placeholder="Enter Your Moblie Number" onchange="return ValidatePhn(this)" maxlength="10"   required>
-                 <span id="spnErrorPhn" style="color: Red; display: none">*Valid characters: Numbers only, 10 Digits are allowed And Number is an Indian Number allowed.</span>
-                        </div>
-
-
-
-                <div class="form-group">
-                <label>Crop Name:</label>
-                <input type=text  class="form-control"  maxlength="10" name=txtcname id="cropid" placeholder="Enter Your Cropname" onchange="return ValidateCropname(this)" required>
-                 <span id="spnErrorCropname" style="color: Red; display: none">*Valid characters: alphabetical only And maximum 80 characters are allowed.</span>
-                </div>
-            
                 
-                <div class="form-group">
+                <div class="form-group col-md-4">
                 <label>Harvesting Price:</label>
                 <input type=text   class="form-control" id="hprice" name=txtharprice placeholder="Enter Your Harvesting Price" maxlength="5" onchange="return ValidateHprice(this)"  required>
                  <span id="spnErrorHprice" style="color: Red; display: none">*Valid characters: Only Numerical Numbers Are Allowed.</span>
                 </div>
-                
-                
-                <div class="form-group">
+                </div>
+
+                <div class="form-row">  
+                <div class="form-group col-md-6">
                 <label>Username:</label>
                 <input type=text class="form-control" id="userid"  name=txtuname placeholder="Enter Your Username" onchange="return ValidateUsername(this)"  required>
-                <span id="spnErrorUsername" style="color: Red; display: none">*Valid characters: Only Numerical Numbers Are Allowed.</span>
+                <span id="spnErrorUsername" style="color: Red; display: none">*Valid characters: Only alphabetical characters,1 underscop or hyphen,and string must be 8 or longer.</span>
                 </div>
                 
-                <div class="form-group">
+                <div class="form-group col-md-6">
                 <label>password:</label>
                 <input type=password class="form-control" id="fpwd" name=txtpassword placeholder="Enter Your password" data-toggle="password" onchange="return ValidateFpwd(this)" required>
                  <span id="spnErrorFpwd" style="color: Red; display: none">*At least 1 lowercase alphabetical character,1 uppercase alphabetical character, 1 numeric character, one special character And string must be eight characters or longer </span>
   
                 </div>
     
-                 
+              </div>
+              <div class="form-row">
             <div class="form-group">
-            <div class="col-sm-4">
+            <div class="col-md-2">
              <button type="submit" name="submit" id="submit" class="btn btn-primary" onclick="return validateForm();">Submit</button>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-2">
             <a href="FarmerReg.php" class="btn btn-danger" role="button" >Cancle </a>
+            </div>
             </div>
             </div>
                     
@@ -308,8 +320,7 @@
 
 </div>
 </div>
-</div>
-</div>
+
 <?php
 include_once("footer.php");
 ?>

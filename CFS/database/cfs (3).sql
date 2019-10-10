@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2019 at 01:38 AM
+-- Generation Time: Oct 10, 2019 at 02:00 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -45,7 +45,8 @@ CREATE TABLE `acceptreq` (
 --
 
 INSERT INTO `acceptreq` (`ac_id`, `f_id`, `c_id`, `sdate`, `preagreedprice`, `message`, `respondstatus`, `updated_at`, `notification`) VALUES
-(78, 41, 14, '2019-10-04', '3000', '5 months.', 1, '04/10/2019 04:07:24', 2);
+(78, 41, 14, '2019-10-04', '3000', '5 months.', 1, '04/10/2019 04:07:24', 2),
+(79, 42, 14, '2019-10-09', '3000', '5 months.', 1, '09/10/2019 10:47:36', 1);
 
 -- --------------------------------------------------------
 
@@ -222,10 +223,7 @@ CREATE TABLE `farmer` (
 
 INSERT INTO `farmer` (`f_id`, `fname`, `city`, `taluka`, `village`, `latitude`, `longitude`, `farmarea`, `surveyno`, `mobno`, `cropname`, `harvestingprice`, `uname`, `password`, `status`, `fa_notification`) VALUES
 (41, 'darshit tank', '2', '4', '6', '22.55084805436544', '72.94397054128649', '3', '452/4', '7800361212', 'potato', '2000', 'darsh', 'darsh@123', 1, 1),
-(42, 'rupesh patel', '1', '1', '4', '22.55156146483995', '72.94491467885973', '4', '452/4', '9871235460', 'tomato', '2000', 'rupu', 'rupu@1234', 0, 0),
-(43, '1212', '1', '1', '4', '22.551482197191607', '72.94783292226793', '12a', '452/1', 'dsd', 'sdd', '20qq', 'asa', 'asa', 0, 0),
-(44, '1212', '3', '6', '23', '', '', '1as', '452/1', 'dsdss', 'sdd', '20qqs', 'asaa', 'asas', 0, 0),
-(45, 'aswq1', '2', '3', '1', '22.5506895182035', '72.94680295400622', 'qa', 'a', 'aaa', 'ssa2', 'aa', 'aa', 'aa', 2, 1);
+(42, 'rupesh patel', '2', '1', '4', '22.55156146483995', '72.94491467885973', '4', '452/4', '9871235460', 'tomato', '2000', 'rupu', 'rupu@1234', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -281,6 +279,19 @@ CREATE TABLE `rawmaterial` (
   `updated_at` varchar(20) NOT NULL DEFAULT '0000-00-00 00:00:00',
   `ma_notification` int(10) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rawmaterial`
+--
+
+INSERT INTO `rawmaterial` (`rm_id`, `c_id`, `f_id`, `materialtype`, `materialname`, `quantity`, `unitprice`, `totprice`, `status`, `created_at`, `updated_at`, `ma_notification`) VALUES
+(92, 14, 41, 'Fertilizers', 'urea', '3', '1200', '3600', 1, '09/10/2019 09:57:59', '09/10/2019 09:59:31', 1),
+(93, 14, 41, 'Pesticides', 'Urea Super Granulated', '3', '1000', '3000', 1, '09/10/2019 09:58:16', '09/10/2019 09:59:33', 1),
+(94, 14, 41, 'Seed', 'tomato seed', '3', '1300', '3900', 1, '09/10/2019 09:58:37', '09/10/2019 09:59:35', 1),
+(95, 14, 42, 'Seed', 'tomato seed', '3', '1200', '3600', 1, '09/10/2019 10:48:35', '09/10/2019 10:50:24', 1),
+(96, 14, 42, 'Fertilizers', 'urea', '3', '1000', '3000', 1, '09/10/2019 10:48:48', '09/10/2019 10:50:25', 1),
+(97, 14, 41, 'Pesticides', 'Urea Super Granulated', '3', '1200', '3600', 2, '09/10/2019 10:49:03', '0000-00-00 00:00:00', 1),
+(98, 14, 41, 'Fertilizers', 'ammonium sulphate', '2', '1000', '2000', 2, '09/10/2019 10:49:19', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -383,6 +394,13 @@ CREATE TABLE `transportcharges` (
   `price` varchar(20) NOT NULL,
   `totaltransportprice` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transportcharges`
+--
+
+INSERT INTO `transportcharges` (`ta_id`, `f_id`, `c_id`, `distance`, `price`, `totaltransportprice`) VALUES
+(33, 42, 14, '49.57', '15', '743.55');
 
 -- --------------------------------------------------------
 
@@ -540,7 +558,7 @@ ALTER TABLE `villages`
 -- AUTO_INCREMENT for table `acceptreq`
 --
 ALTER TABLE `acceptreq`
-  MODIFY `ac_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `ac_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -594,7 +612,7 @@ ALTER TABLE `labourcharge`
 -- AUTO_INCREMENT for table `rawmaterial`
 --
 ALTER TABLE `rawmaterial`
-  MODIFY `rm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `rm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT for table `taluka`
@@ -612,7 +630,7 @@ ALTER TABLE `totalproduction`
 -- AUTO_INCREMENT for table `transportcharges`
 --
 ALTER TABLE `transportcharges`
-  MODIFY `ta_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `ta_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `villages`

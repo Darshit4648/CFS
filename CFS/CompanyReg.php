@@ -201,33 +201,35 @@ function ValidateEmail() {
   }
 </script>
 
-    
-<div class="offset-md-4 jumbotron offset-md-4">
 <div class="container-fluid">
+<div class="jumbotron col-md-offset-2 col-md-8 col-md-offset-3">
 <form action="companyinsert.php" method="POST">
 
 <div class="row">
 <div class="center-block">
-   <h3 class="col-md-6 col-md-offset-4">Company Registration </h3>
+   <h3 class="col-md-offset-4 col-md-6 col-md-offset-4">Company Registration </h3>
 </div>
 </div>
-<div class="row">
-<div class="col-md-4 col-md-4 col-md-offset-4">
+<br>
 
-<div class="form-group">
+<div class="form-row">
+<div class="form-group col-md-6">
 <label>Company Name:</label>
 <input type=text class="form-control"  name=txtcname id="cnameid"  placeholder="Enter Your Company Name" onchange="return ValidateCname(this)"  required >
 <span id="spnErrorCname" style="color: Red; display: none">*Valid characters: alphabetical only And maximum 80 characters are allowed.</span>
 
 </div>
 
-<div class="form-group">
+<div class="form-group col-md-6">
             <label>Company Supervisor Name:</label>
             <input type=text  class="form-control"  id="snameid" name=txtsname placeholder="Enter Your name" onchange="return ValidateSname(this)"  required>
             <span id="spnErrorSname" style="color: Red; display: none">*Valid characters: alphabetical only And maximum 80 characters are allowed.</span>
             
                 </div>
-              <div class="form-group">
+              </div>
+               
+              <div class="form-row"> 
+              <div class="form-group col-md-4">
         <label>City:</label>
         <select class="form-control"  id="districtID" name="txtcity" onchange="change_district()" required>
           <option selected value="0">select</option>
@@ -245,77 +247,91 @@ function ValidateEmail() {
         </select>
       </div>
 
-       <div class="form-group">
+       <div class="form-group col-md-4">
       <label>Taluka:</label>
        <select class="form-control" id="talukaID" name="txttaluka" onchange="change_village()" required>
          <option value="">Select</option>
        </select>
       </div>
     
-    <div class="form-group">
+    <div class="form-group col-md-4">
       <label>Villages:</label>
        <select class="form-control" id="villageID" name="txtvillage" required>
          <option value="">Select</option>
        </select>
       </div>
-
+         </div>
                <input type="hidden" name="lat" id="latclicked" value="">
                <input type="hidden" name="long" id="longclicked" value=""> 
              
           <div>
-            <div id="map" class="form-control"  style="height: 300px;width:300px"></div>
+            <div id="map" class="form-control"  style="height: 300px;width:750px"></div>
         </div>
+        <br>
        
-
+                
                 <div class="form-group">
             <label>Address:</label>
-            <input type=text class="form-control" name=txtaddress id="adressid" placeholder="Enter Your Address"  required>
-           
-
+            <textarea type=text class="form-control" name="txtaddress" id="adressid" placeholder="Enter Your Address"  required></textarea>  
+          
                 </div>
-
-                 <div class="form-group">
+                
+                  
+                   <div class="form-row">
+                 <div class="form-group col-md-6">
             <label>Mobile Number:</label>
             <input type=text  class="form-control" name=txtmobno id="phnid"  placeholder="Enter Your mobile Number" onchange="return ValidateCphn(this)" maxlength="10" required >
+            <div class="form-row">
             <span id="spnErrorCphn" style="color: Red; display: none">*Valid characters: Numbers only, 10 Digits are allowed And Number is an Indian Number allowed.</span>
-           
+           </div>
                 </div>
+              
+
                 
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label>Email:</label>
                 <input type=text  class="form-control" name=txtemail id="emailid" placeholder="Enter Your Email" onchange="return ValidateEmail(this)" required>
-                 <span id="spnErrorEmail" style="color: Red; display: none">*Valid characters: Numbers only, 10 Digits are allowed And Number is an Indian Number allowed.</span>
-                
+                <div class="form-row">
+                 <span id="spnErrorEmail" style="color: Red; display: none">*Valid Email Address.</span>
+                </div>
+                        </div>
                         </div>
                         
-                        
-                        <div class="form-group">
+                        <div class="form-row">
+                        <div class="form-group col-md-6">
                     <label>Username:</label>
                 <input type=text  class="form-control" name=txtusername id="userid" placeholder="Enter Your Username" onchange="return ValidateCusername(this)" required>
-                <span id="spnErrorCusername" style="color: Red; display: none">*Valid characters: Only Numerical Numbers Are Allowed.</span>
+                <div class="form-row">
+                <span id="spnErrorCusername" style="color: Red; display: none">*Valid characters: Only alphabetical characters,1 underscop or hyphen,and string must be 8 or longer.</span>
+                </div>
                         </div>
+                        
+                        
 
-                <div class="form-group">
+                <div class="form-group col-md-6">
                 <label>Password:</label>
                 <input type=password  class="form-control" id="cpwd"  name=txtpassword  placeholder="Enter Your Password" data-toggle="password"   onchange="return ValidateCpwd(this)" required>
+                 <div class="form-row">
                 <span id="spnErrorCpwd" style="color: Red; display: none">*At least 1 lowercase alphabetical character,1 uppercase alphabetical character, 1 numeric character, one special character And string must be eight characters or longer </span>
-                   
+                   </div>
                 </div>
-                
+                </div>
+
+             <div class="form-row">    
             <div class="form-group">
-            <div class="col-sm-4">
+            <div class="col-sm-2">
             <button type="submit" name="submit" id="submit" class="btn btn-primary" onclick="return validateForm();">Submit</button>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-2">
             <a href="CompanyReg.php" class="btn btn-danger" role="button" >Cancle </a>
+            </div>
             </div>
             </div>
                     
 </form>
 </div>
 </div>
-</div>
-</div>
+
 
 <?php
 include_once("footer.php");

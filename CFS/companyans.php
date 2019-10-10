@@ -4,7 +4,7 @@
 <div class="container-fluid" >
 	<div class="jumbotron col-md-offset-3 col-md-6 col-md-offset-3" >
 		<?php
-                 if (isset($_GET["errr"]))
+                 if (isset($_GET["err"]))
 				  {
 							echo"
 								 <div class='form-group'>
