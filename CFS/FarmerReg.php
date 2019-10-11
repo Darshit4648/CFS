@@ -316,24 +316,28 @@ if(isset($_GET["er"]))
                 </div>
     
               </div>
-
-              <div class="form-group col-md-6">      
+                 
+              <div class="form-row">   
+              <div class="form-group col-md-6">    
+                                 <label>Captcha:</label>  
                                 <input  type="text" class="form-control" name="txtcaptcha" id="captchaid" placeholder="Enter Your Captcha" required>
                                 <br>
                                 </div>
-                                <div class="form-group col-md-6">
+                                
+                                  <div style="margin-top: 25px;" class="form-group col-md-6"> 
                                  <img id="captcha_code" src="capcha.php" />
                                  <span class="glyphicon glyphicon-refresh" id="refersh"> </span>
+                              </div>
                               </div>
 
               <div class="form-row">
             <div class="form-group">
-            <div class="col-md-2">
+            <div class="col-sm-8">
              <button type="submit" name="submit" id="submit" class="btn btn-primary" onclick="return validateForm();">Submit</button>
-            </div>
-            <div class="col-sm-2">
+            
+            
             <a href="FarmerReg.php" class="btn btn-danger" role="button" >Cancle </a>
-            </div>
+           </div>
             </div>
             </div>
                     
@@ -343,7 +347,7 @@ if(isset($_GET["er"]))
 </div>
 <script>
       $('#refersh').click(function() {
-    $("#captcha_code").attr('src','capcha.php');
+    $('#captcha_code').attr('src','capcha.php');
 });
    </script> 
 <?php

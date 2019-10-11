@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2019 at 12:56 AM
+-- Generation Time: Oct 12, 2019 at 01:18 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -46,7 +46,7 @@ CREATE TABLE `acceptreq` (
 
 INSERT INTO `acceptreq` (`ac_id`, `f_id`, `c_id`, `sdate`, `preagreedprice`, `message`, `respondstatus`, `updated_at`, `notification`) VALUES
 (78, 41, 14, '2019-10-04', '3000', '5 months.', 1, '04/10/2019 04:07:24', 2),
-(79, 42, 14, '2019-10-09', '3000', '5 months.', 1, '09/10/2019 10:47:36', 1);
+(79, 42, 14, '2019-10-09', '3000', '5 months.', 1, '12/10/2019 02:43:24', 1);
 
 -- --------------------------------------------------------
 
@@ -147,7 +147,8 @@ INSERT INTO `company` (`c_id`, `companyname`, `companysname`, `city`, `taluka`, 
 (14, 'Trinity Goodies', 'prabhas patel', '2', '3', '1', '22.93207646213821', '72.6931185232736', 'gidc ahmedabad 380061.', '9871235460', 'tankdarhit437@student.aau.in', 'prabhas', '1234'),
 (17, 'cottonservo', 'nigam patel', '2', '3', '1', '22.534500290369316', '72.9690348481713', 'gidc ahmedabad 380061.', '9825743215', 'tankdarhit437@student.aau.in', 'nigam', 'nigam@12'),
 (18, 'balaji', 'bhavya ', '1', '1', '3', '22.535372339279395', '72.96620243545158', 'gidc ANAND38001.', '9871235460', 'bhavychaudhary5@student.aau.in', 'bhavya', 'bhavya@12'),
-(19, 'tomato', 'bhavya ', '2', '3', '2', '22.531347410296863', '72.97531127929688', 'gidc chennai 380061.', '9898999678', 'tankdarhit437@student.aau.in', 'dars_28', 'Darshit@12');
+(19, 'tomato', 'bhavya ', '2', '3', '2', '22.531347410296863', '72.97531127929688', 'gidc chennai 380061.', '9898999678', 'tankdarhit437@student.aau.in', 'dars_28', 'Darshit@12'),
+(20, 'parle', 'meet ladani', '3', '6', '24', '22.536561488008623', '72.99159356709106', 'gggggg', '9897667676', 'tankdarshit437@gmail.com', 'meet_12', 'Meet@1234');
 
 -- --------------------------------------------------------
 
@@ -577,7 +578,7 @@ ALTER TABLE `city`
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `companyaccount`

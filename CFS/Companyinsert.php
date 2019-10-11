@@ -1,6 +1,8 @@
 <?php
           include("connect.php");
-
+         session_start();
+        echo  $captcha=$_POST["txtcaptcha"];
+        echo  $companycaptcha=$_SESSION["captcha_code"]; 
         $cname=$_POST["txtcname"];
         $sname=$_POST["txtsname"];
         $city=$_POST["txtcity"];
@@ -14,7 +16,8 @@
         $taluka=$_POST["txttaluka"];
         $village=$_POST["txtvillage"];
      
-
+         if($captcha == $companycaptcha)
+         {
          $qry="insert into company(companyname,companysname,city,taluka,village,latitude,longitude,address,mobno,email,username,password)values('$cname','$sname','$city','$taluka','$village','$latitude','$longitude','$address','$mobno','$email','$username','$password')";
 
           if (mysqli_query($con, $qry)) {
@@ -22,6 +25,12 @@
                header("location:login.php?errrr=1");
             } else {
                echo "Error: " . $qry . "" . mysqli_error($con);
+            }
+
+            }
+            else
+            {
+               header("location:CompanyReg.php?er=1");
             }
 
 ?>

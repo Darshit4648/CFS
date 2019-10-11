@@ -13,6 +13,32 @@
           $uname=$data["uname"];
         
   ?>
+  <script>
+
+    function ValidateFname() {
+        var isValid = false;
+        var regex = /^[a-zA-Z][a-zA-Z ]+$/;
+        isValid = regex.test(document.getElementById("fname").value);
+        document.getElementById("spnErrorFname").style.display = !isValid ? "block" : "none";
+        return isValid;
+    }
+
+    function ValidateFphn() {
+        var isValid = false;
+        var regex = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/;
+        isValid = regex.test(document.getElementById("fmobid").value);
+        document.getElementById("spnErrorFphn").style.display = !isValid ? "block" : "none";
+        return isValid;
+    }
+     function ValidateFusername() {
+        var isValid = false;
+        var regex = /^[a-zA-Z0-9_-]{6,14}$/;
+        isValid = regex.test(document.getElementById("Fuserid").value);
+        document.getElementById("spnErrorFusername").style.display = !isValid ? "block" : "none";
+        return isValid;
+    }
+
+  </script>
   <div class="container-fluid" >
   
   <div class="jumbotron col-md-offset-3 col-md-6 col-md-offset-3" >
@@ -37,22 +63,22 @@
    
       <div class="form-group">
         <label>Farmer Name:</label>
-        <input type="text" class="form-control" name="txtfname"  placeholder="Enter your Material Name"  value="<?php echo $fname; ?>" required>
+        <input type="text" class="form-control" name="txtfname" id="fname" placeholder="Enter your Material Name" onchange="return ValidateFname(this)"    value="<?php echo $fname; ?>" required>
+        <span id="spnErrorFname" style="color: Red; display: none">*Valid characters: alphabetical only And maximum 80 characters are allowed.</span>
       </div>
       
-      <div class="form-group">
-        <label>City:</label>
-        <input type="text" class="form-control"  name="txtfcity" placeholder="Enter Quantity of Material" value="<?php echo $city; ?>" required>
-      </div>
+      
 
       <div class="form-group">
         <label>Mobile Number:</label>
-        <input type="text" class="form-control"  name="txtfmobno" placeholder="Enter your Material Name" value="<?php echo $mobno; ?>" maxlength="10" required>
+        <input type="text" class="form-control"  name="txtfmobno" id="fmobid" placeholder="Enter your Material Name" onchange="return ValidateFphn(this)"  value="<?php echo $mobno; ?>" maxlength="10" required>
+         <span id="spnErrorFphn" style="color: Red; display: none">*Valid characters: Numbers only, 10 Digits are allowed And Number is an Indian Number allowed.</span>
       </div>
 
       <div class="form-group">
         <label>Username:</label>
-        <input type="text" class="form-control"  name="txtfuname" placeholder="Enter your Material Name" value="<?php echo $uname; ?>" required>
+        <input type="text" class="form-control"  name="txtfuname" id="Fuserid" placeholder="Enter your Material Name" onchange="return ValidateFusername(this)" value="<?php echo $uname; ?>" required>
+        <span id="spnErrorFusername" style="color: Red; display: none">*Valid characters: Only alphabetical characters,1 underscop or hyphen,and string must be 8 or longer.</span>
       </div>
 
     

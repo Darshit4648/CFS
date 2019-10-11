@@ -200,7 +200,19 @@ function ValidateEmail() {
 
   }
 </script>
-
+<?php
+if(isset($_GET["er"]))
+                            {
+                                echo"<div class='col-md-4 col-md-offset-4'>
+                 <div class='form-group'>
+                                            <div class='alert alert-danger alert-dismissable fade in'>
+                                                <a href='#' class='close' data-dismiss='alert'>&times;</a>
+                                                                      Your captcha is invalid !!!
+                                            </div>
+                                        </div>
+                                    </div>";
+                            }   
+                            ?>
 <div class="container-fluid">
 <div class="jumbotron col-md-offset-2 col-md-8 col-md-offset-3">
 <form action="companyinsert.php" method="POST">
@@ -317,12 +329,24 @@ function ValidateEmail() {
                 </div>
                 </div>
 
+                 <div class="form-row">   
+              <div class="form-group col-md-6">    
+                                 <label>Captcha:</label>  
+                                <input  type="text" class="form-control" name="txtcaptcha" id="captchaid" placeholder="Enter Your Captcha" required>
+                                <br>
+                                </div>
+                                
+                                  <div style="margin-top: 25px;" class="form-group col-md-6"> 
+                                 <img id="captcha_code" src="capcha.php" />
+                                 <span class="glyphicon glyphicon-refresh" id="refersh"> </span>
+                              </div>
+                              </div>
+
              <div class="form-row">    
             <div class="form-group">
-            <div class="col-sm-2">
+            <div class="col-sm-8">
             <button type="submit" name="submit" id="submit" class="btn btn-primary" onclick="return validateForm();">Submit</button>
-            </div>
-            <div class="col-sm-2">
+        
             <a href="CompanyReg.php" class="btn btn-danger" role="button" >Cancle </a>
             </div>
             </div>
@@ -332,7 +356,11 @@ function ValidateEmail() {
 </div>
 </div>
 
-
+<script>
+      $('#refersh').click(function() {
+    $('#captcha_code').attr('src','capcha.php');
+});
+   </script>  
 <?php
 include_once("footer.php");
 ?>
