@@ -16,7 +16,7 @@
 <div class="container-fluid" >
 
 	<div class="jumbotron col-md-offset-3 col-md-6 col-md-offset-3" >
-	 <h3 class="col-md-offset-2">Add ExtraRaw Materials</h3>
+	 <h3 class="col-md-offset-3">Add ExtraRaw Materials</h3>
 	 <?php
                  if (isset($_GET["errr"]))
 				  {
@@ -31,7 +31,7 @@
 		   
 				  }
 				  ?>
-				 
+				 <br>
 	 <form action="Extrarawmaterialinsert.php"  class="form-horizontal" method="POST"> 
 		<div class="form-group">
 				<label>Contract Company:</label>
@@ -77,7 +77,7 @@
 			</div>
 			<div class="form-group">
 				<label>Material Name:</label>
-				<input type="text" class="form-control" name="txtmname" placeholder="Enter your Material Name" required>
+				<input type="text" class="form-control" name="txtmname" placeholder="Enter Material Name" required>
 			</div>
 			
 			<div class="form-group">

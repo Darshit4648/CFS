@@ -5,7 +5,7 @@
 
       $f_id=$_COOKIE["f_id"];
         // $c_id=$_COOKIE["c_id"];
-        echo $f1_id=$_GET["f_id"];
+        $f1_id=$_GET["f_id"];
 
       $qry="update acceptreq set respondstatus='1' where f_id= '$f1_id'";
         $rs1=mysqli_query($con,$qry);
@@ -30,7 +30,7 @@
            if($row==1)
            {
                $data1=mysqli_fetch_assoc($rs3);
-                echo $mail1=$data1["email"]; 
+                $mail1=$data1["email"]; 
                     $sdate=substr($data1["sdate"], 8,2)."-".substr($data1["sdate"], 5,2)."-".substr($data1["sdate"], 0,4);
                     $cname=$data1["companyname"];
 

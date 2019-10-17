@@ -3,7 +3,7 @@
      include("connect.php");
      include("header.php");
       $fcity=$_COOKIE["city"];
-      echo $fcity;
+      
        $qry="SELECT * FROM company INNER JOIN    acceptreq ON acceptreq.c_id = company.c_id  where company.city='$fcity' && acceptreq.respondstatus='1' ";
      // $qry="select * from company where city='$fcity'";
       $rs=mysqli_query($con,$qry);

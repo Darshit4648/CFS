@@ -1,8 +1,9 @@
 <?php
 session_start();
-$random_alpha = md5(rand());
-$captcha_code = substr($random_alpha, 0, 6);
-$_SESSION["captcha_code"] = $captcha_code;
+$random_alpha = rand(1,30);
+$random_alpha2 = rand(1,30);
+$captcha_code = $random_alpha.' + '.$random_alpha2;
+$_SESSION["captcha_code"] = $random_alpha+$random_alpha2;
 $target_layer = imagecreatetruecolor(70,30);
 $captcha_background = imagecolorallocate($target_layer, 255, 160, 119);
 imagefill($target_layer,0,0,$captcha_background);

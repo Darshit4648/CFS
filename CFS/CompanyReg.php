@@ -141,6 +141,8 @@
       alert( "Request failed: " + textStatus );
     });
   }
+
+   
 </script>
 <script>
   function ValidateCname() {
@@ -188,8 +190,17 @@ function ValidateEmail() {
         document.getElementById("spnErrorCpwd").style.display = !isValid ? "block" : "none";
         return isValid;
     }
+
+     function ValidateCaddress() {
+        var isValid = false;
+        var regex = /^[a-zA-Z0-9\s,'-]*$/;
+        isValid = regex.test(document.getElementById("caddress").value);
+        document.getElementById("spnErrorCaddress").style.display = !isValid ? "block" : "none";
+        return isValid;
+    }
+
     function validateForm() {
-    if( ( $("#spnErrorCname").css('display') == 'none' || $("#spnErrorCname").css("visibility") == "hidden")&&( $("#spnErrorSname").css('display') == 'none' || $("#spnErrorSname").css("visibility") == "hidden")&&( $("#spnErrorCphn").css('display') == 'none' || $("#spnErrorCphn").css("visibility") == "hidden")&&( $("#spnErrorEmail").css('display') == 'none' || $("#spnErrorEmail").css("visibility") == "hidden")&&( $("#spnErrorCusername").css('display') == 'none' || $("#spnErrorCusername").css("visibility") == "hidden")&&( $("#spnErrorCpwd").css('display') == 'none' || $("#spnErrorCpwd").css("visibility") ==  "hidden"))
+    if( ( $("#spnErrorCname").css('display') == 'none' || $("#spnErrorCname").css("visibility") == "hidden")&&( $("#spnErrorSname").css('display') == 'none' || $("#spnErrorSname").css("visibility") == "hidden")&&( $("#spnErrorCphn").css('display') == 'none' || $("#spnErrorCphn").css("visibility") == "hidden")&&( $("#spnErrorEmail").css('display') == 'none' || $("#spnErrorEmail").css("visibility") == "hidden")&&( $("#spnErrorCusername").css('display') == 'none' || $("#spnErrorCusername").css("visibility") == "hidden")&&( $("#spnErrorCpwd").css('display') == 'none' || $("#spnErrorCpwd").css("visibility") ==  "hidden")&&( $("#spnErrorCaddress").css('display') == 'none' || $("#spnErrorCaddress").css("visibility") ==  "hidden"))
     {
 
     }
@@ -199,6 +210,63 @@ function ValidateEmail() {
     }
 
   }
+  function Emailchk()
+  {
+      var email=$("#emailid").val();// value in field email
+        $.ajax({
+      type:"GET",
+          url:"checkMail.php",// put your real file name 
+          data:{email: email},
+          success:function(msg){
+          if(msg=="email address is already exist")
+          {
+            alert(msg); 
+            $("#emailid").val("");
+          }
+        }
+          
+   });
+   
+  }
+
+  function Mobnochk()
+  {
+      var mobno=$("#phnid").val();// value in field email
+        $.ajax({
+      type:"GET",
+          url:"checkMobno.php",// put your real file name 
+          data:{mobno: mobno},
+          success:function(msg){
+          if(msg=="Mobile Numbers  is already exist")
+          {
+            alert(msg); 
+            $("#phnid").val("");
+          }
+        }
+          
+   });
+   
+  }
+
+  function Unamechk()
+  {
+      var uname=$("#userid").val();// value in field email
+        $.ajax({
+      type:"GET",
+          url:"checkUname.php",// put your real file name 
+          data:{uname: uname},
+          success:function(message){
+          if(message=="Username is already exist")
+          {
+            alert(message); 
+            $("#userid").val("");
+          }
+        }
+          
+   });
+   
+  }
+
 </script>
 <?php
 if(isset($_GET["er"]))
@@ -212,6 +280,28 @@ if(isset($_GET["er"]))
                                         </div>
                                     </div>";
                             }   
+                            if(isset($_GET["erd"]))
+                            {
+                                echo"<div class='col-md-4 col-md-offset-4'>
+                 <div class='form-group'>
+                                            <div class='alert alert-danger alert-dismissable fade in'>
+                                                <a href='#' class='close' data-dismiss='alert'>&times;</a>
+                                                                     Email Address is Already Exist.!!!
+                                            </div>
+                                        </div>
+                                    </div>";
+                            }  
+                            if(isset($_GET["erddd"]))
+                            {
+                                echo"<div class='col-md-4 col-md-offset-4'>
+                 <div class='form-group'>
+                                            <div class='alert alert-danger alert-dismissable fade in'>
+                                                <a href='#' class='close' data-dismiss='alert'>&times;</a>
+                                                                      Mobile Number is already Exist. !!!
+                                            </div>
+                                        </div>
+                                    </div>";
+                            }  
                             ?>
 <div class="container-fluid">
 <div class="jumbotron col-md-offset-2 col-md-8 col-md-offset-3">
@@ -227,14 +317,14 @@ if(isset($_GET["er"]))
 <div class="form-row">
 <div class="form-group col-md-6">
 <label>Company Name:</label>
-<input type=text class="form-control"  name=txtcname id="cnameid"  placeholder="Enter Your Company Name" onchange="return ValidateCname(this)"  required >
+<input type=text class="form-control"  name=txtcname id="cnameid"  placeholder="Enter Company Name" onchange="return ValidateCname(this)"  required >
 <span id="spnErrorCname" style="color: Red; display: none">*Valid characters: alphabetical only And maximum 80 characters are allowed.</span>
 
 </div>
 
 <div class="form-group col-md-6">
             <label>Company Supervisor Name:</label>
-            <input type=text  class="form-control"  id="snameid" name=txtsname placeholder="Enter Your name" onchange="return ValidateSname(this)"  required>
+            <input type=text  class="form-control"  id="snameid" name=txtsname placeholder="Enter name" onchange="return ValidateSname(this)"  required>
             <span id="spnErrorSname" style="color: Red; display: none">*Valid characters: alphabetical only And maximum 80 characters are allowed.</span>
             
                 </div>
@@ -280,19 +370,19 @@ if(isset($_GET["er"]))
             <div id="map" class="form-control"  style="height: 300px;width:750px"></div>
         </div>
         <br>
-       
-                
+           
                 <div class="form-group">
             <label>Address:</label>
-            <textarea type=text class="form-control" name="txtaddress" id="adressid" placeholder="Enter Your Address"  required></textarea>  
-          
+            <textarea type=text class="form-control" name="txtaddress" id="caddress" placeholder="Enter Address" minlength="3" onchange="return ValidateCaddress(this)" required></textarea>  
+             <div class="form-row">
+            <span id="spnErrorCaddress" style="color: Red; display: none">*Valid characters: Numbers only, 10 Digits are allowed And Number is an Indian Number allowed.</span>
+           </div>
                 </div>
                 
-                  
                    <div class="form-row">
                  <div class="form-group col-md-6">
             <label>Mobile Number:</label>
-            <input type=text  class="form-control" name=txtmobno id="phnid"  placeholder="Enter Your mobile Number" onchange="return ValidateCphn(this)" maxlength="10" required >
+            <input type=text  class="form-control" name=txtmobno id="phnid"  placeholder="Enter mobile Number" onchange="return ValidateCphn(this)" onblur=" Mobnochk()" maxlength="10" required >
             <div class="form-row">
             <span id="spnErrorCphn" style="color: Red; display: none">*Valid characters: Numbers only, 10 Digits are allowed And Number is an Indian Number allowed.</span>
            </div>
@@ -302,7 +392,7 @@ if(isset($_GET["er"]))
                 
                 <div class="form-group col-md-6">
                     <label>Email:</label>
-                <input type=text  class="form-control" name=txtemail id="emailid" placeholder="Enter Your Email" onchange="return ValidateEmail(this)" required>
+                <input type=text  class="form-control" name=txtemail id="emailid" placeholder="Enter Email" onblur=" Emailchk()" required>
                 <div class="form-row">
                  <span id="spnErrorEmail" style="color: Red; display: none">*Valid Email Address.</span>
                 </div>
@@ -312,7 +402,7 @@ if(isset($_GET["er"]))
                         <div class="form-row">
                         <div class="form-group col-md-6">
                     <label>Username:</label>
-                <input type=text  class="form-control" name=txtusername id="userid" placeholder="Enter Your Username" onchange="return ValidateCusername(this)" required>
+                <input type=text  class="form-control" name=txtusername id="userid" placeholder="Enter Username" onchange="return ValidateCusername(this)" onblur="Unamechk()" required>
                 <div class="form-row">
                 <span id="spnErrorCusername" style="color: Red; display: none">*Valid characters: Only alphabetical characters,1 underscop or hyphen,and string must be 8 or longer.</span>
                 </div>
@@ -322,7 +412,7 @@ if(isset($_GET["er"]))
 
                 <div class="form-group col-md-6">
                 <label>Password:</label>
-                <input type=password  class="form-control" id="cpwd"  name=txtpassword  placeholder="Enter Your Password" data-toggle="password"   onchange="return ValidateCpwd(this)" required>
+                <input type=password  class="form-control" id="cpwd"  name=txtpassword  placeholder="Enter Password" data-toggle="password"   onchange="return ValidateCpwd(this)" required>
                  <div class="form-row">
                 <span id="spnErrorCpwd" style="color: Red; display: none">*At least 1 lowercase alphabetical character,1 uppercase alphabetical character, 1 numeric character, one special character And string must be eight characters or longer </span>
                    </div>
@@ -332,7 +422,7 @@ if(isset($_GET["er"]))
                  <div class="form-row">   
               <div class="form-group col-md-6">    
                                  <label>Captcha:</label>  
-                                <input  type="text" class="form-control" name="txtcaptcha" id="captchaid" placeholder="Enter Your Captcha" required>
+                                <input  type="text" class="form-control" name="txtcaptcha" id="captchaid" placeholder="Enter Captcha" required>
                                 <br>
                                 </div>
                                 

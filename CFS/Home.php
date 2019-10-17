@@ -61,7 +61,7 @@ $(document).ready(function() {
 
 </style>
 <button onclick="topFunction()" id="myBtn" title="Go to top"><span class="glyphicon glyphicon-arrow-up"></span></button>
-<!-- <?php// echo $_COOKIE["Uname"]; ?> -->
+
 <div class="container-fluid">
        
   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">

@@ -1,5 +1,6 @@
  <head>
   <title> WELCOME CFS</title>
+
   <link rel="icon" href="Image/c1.png" type="image/x-icon">
 <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="content-type" content="text/html;charset=utf8">
@@ -11,12 +12,31 @@
     <script src="gu/jsapi.js"></script>
 	<script src="js/bootstrap.min.js"></script>	
    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-show-password/1.0.3/bootstrap-show-password.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    
+<script type="text/javascript">
+    $(window).load(function() {
+      $(".loader").fadeOut("slow");
+    });
+  </script>
    
-
-   
-   
-
 </head>
+<style>
+  .loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('image/Preloader_28.gif') 50% 50% no-repeat rgb(249,249,249);
+    opacity: .8;
+}
+</style>
+
+  <div class="loader"></div>
+
+  
 <?php
     include("connect.php");
     $qry="select * from acceptreq where respondstatus=0";
@@ -30,13 +50,13 @@
 });
 </script>
 <body>
-<div class="container col-sm-12" style="padding-left:0px;padding-right:0px;">
+<div class="container col-sm-12" style="padding-left:0px;padding-right:0px;padding-top: 0px;">
 		
-				<div class="row" style="margin-bottom:5px;margin-top:10px;">
+				<div class="row" style="margin-bottom:5px;margin-top:10px;padding-bottom:0px;">
 					<div class="col-lg-12 col-md-12">
 						<div style="float:left;">
              
-								<br><h1  style="font-family:UniversCondensed;padding-left:10px;"><img src="Image/contract farming.png" width="120px" height="80px"> Contract Farming System</h1>
+								<br><h1  style="font-family:UniversCondensed;padding-left:10px;padding-bottom:0px;"><img src="Image/contract farming.png" width="120px" height="80px"> Contract Farming System</h1>
 						</div>
 			
 					

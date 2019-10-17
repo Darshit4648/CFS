@@ -186,6 +186,44 @@
     }
 
   }
+
+  function Mobnochk()
+  {
+      var mobno=$("#mobid").val();// value in field email
+        $.ajax({
+      type:"GET",
+          url:"fcheckmobno.php",// put your real file name 
+          data:{mobno: mobno},
+          success:function(msg){
+          if(msg=="Moblie Numbers is already exist")
+          {
+            alert(msg); 
+            $("#mobid").val("");
+          }
+        }
+          
+   });
+   
+  }
+
+   function Funamechk()
+  {
+      var funame=$("#userid").val();// value in field email
+        $.ajax({
+      type:"GET",
+          url:"fcheckuname.php",// put your real file name 
+          data:{funame: funame},
+          success:function(msg){
+          if(msg=="Username is already exist")
+          {
+            alert(msg); 
+            $("#userid").val("");
+          }
+        }
+          
+   });
+   
+  }
 </script>
 <?php
 if(isset($_GET["er"]))
@@ -213,7 +251,7 @@ if(isset($_GET["er"]))
 <div class="form-row">
 <div class="form-group">
 <label>Farmer Name:</label>
-<input type=text class="form-control" id="fnameid"  name=txtfname placeholder="Enter Your Name"  onchange="return ValidateName(this)" required>
+<input type=text class="form-control" id="fnameid"  name=txtfname placeholder="Enter Name"  onchange="return ValidateName(this)" required>
 <span id="spnErrorName" style="color: Red; display: none">*Valid characters: alphabetical only And maximum 80 characters are allowed.</span>
 </div>
 </div>
@@ -261,7 +299,7 @@ if(isset($_GET["er"]))
  <div class="form-row">      
  <div class="form-group col-md-6">
                     <label>Moblie Number:</label>
-                <input type=text  class="form-control" id="mobid" name=txtmobno placeholder="Enter Your Moblie Number" onchange="return ValidatePhn(this)" maxlength="10"   required>
+                <input type=text  class="form-control" id="mobid" name=txtmobno placeholder="Enter Moblie Number" onchange="return ValidatePhn(this)" maxlength="10" onblur="Mobnochk()"  required>
                 
                  <span id="spnErrorPhn" style="color: Red; display: none">*Valid characters: Numbers only, 10 Digits are allowed And Number is an Indian Number allowed.</span>
                  
@@ -271,7 +309,7 @@ if(isset($_GET["er"]))
 
        <div class="form-group col-md-6">
                 <label>Crop Name:</label>
-                <input type=text  class="form-control"  maxlength="10" name=txtcname id="cropid" placeholder="Enter Your Cropname" onchange="return ValidateCropname(this)" required>
+                <input type=text  class="form-control"  maxlength="10" name=txtcname id="cropid" placeholder="Enter Cropname" onchange="return ValidateCropname(this)" required>
             
                  <span id="spnErrorCropname" style="color: Red; display: none">*Valid characters: alphabetical only And maximum 80 characters are allowed.</span>
                  </div>
@@ -282,21 +320,21 @@ if(isset($_GET["er"]))
                 <div class="form-row">  
                 <div class="form-group col-md-4">
             <label>Farm Area (In Hector):</label>
-            <input type=text class="form-control area"  name=txtfarmarea id="fareaid" maxlength="3" placeholder="Enter Your FarmArea" onchange="return ValidateFarea(this)" required>
+            <input type=text class="form-control area"  name=txtfarmarea id="fareaid" maxlength="3" placeholder="Enter FarmArea" onchange="return ValidateFarea(this)" required>
             <span id="spnErrorFarea" style="color: Red; display: none">*Valid characters: Only Numerical Numbers Are Allowed.</span>
                 </div>
 
                 
                 <div class="form-group col-md-4">
                     <label>Survey Number:</label>
-                <input type=text  class="form-control" name=txtsurveyno placeholder="Enter Your SurveyNumber" required>
+                <input type=text  class="form-control" name=txtsurveyno placeholder="Enter SurveyNumber" required>
                         </div>
                         
                         
                 
                 <div class="form-group col-md-4">
                 <label>Harvesting Price:</label>
-                <input type=text   class="form-control" id="hprice" name=txtharprice placeholder="Enter Your Harvesting Price" maxlength="5" onchange="return ValidateHprice(this)"  required>
+                <input type=text   class="form-control" id="hprice" name=txtharprice placeholder="Enter Harvesting Price" maxlength="5" onchange="return ValidateHprice(this)"  required>
                  <span id="spnErrorHprice" style="color: Red; display: none">*Valid characters: Only Numerical Numbers Are Allowed.</span>
                 </div>
                 </div>
@@ -304,13 +342,13 @@ if(isset($_GET["er"]))
                 <div class="form-row">  
                 <div class="form-group col-md-6">
                 <label>Username:</label>
-                <input type=text class="form-control" id="userid"  name=txtuname placeholder="Enter Your Username" onchange="return ValidateUsername(this)"  required>
+                <input type=text class="form-control" id="userid"  name=txtuname placeholder="Enter Username" onchange="return ValidateUsername(this)" onblur="Funamechk()" required>
                 <span id="spnErrorUsername" style="color: Red; display: none">*Valid characters: Only alphabetical characters,1 underscop or hyphen,and string must be 8 or longer.</span>
                 </div>
                 
                 <div class="form-group col-md-6">
                 <label>password:</label>
-                <input type=password class="form-control" id="fpwd" name=txtpassword placeholder="Enter Your password" data-toggle="password" onchange="return ValidateFpwd(this)" required>
+                <input type=password class="form-control" id="fpwd" name=txtpassword placeholder="Enter password" data-toggle="password" onchange="return ValidateFpwd(this)" required>
                  <span id="spnErrorFpwd" style="color: Red; display: none">*At least 1 lowercase alphabetical character,1 uppercase alphabetical character, 1 numeric character, one special character And string must be eight characters or longer </span>
   
                 </div>
@@ -320,7 +358,7 @@ if(isset($_GET["er"]))
               <div class="form-row">   
               <div class="form-group col-md-6">    
                                  <label>Captcha:</label>  
-                                <input  type="text" class="form-control" name="txtcaptcha" id="captchaid" placeholder="Enter Your Captcha" required>
+                                <input  type="text" class="form-control" name="txtcaptcha" id="captchaid" placeholder="Enter  Captcha" required>
                                 <br>
                                 </div>
                                 

@@ -42,7 +42,7 @@
    
       <div class="form-group">
         <label>Company Name:</label>
-        <input type="text" class="form-control" name="txtfname"  placeholder="Enter your Material Name"  value="<?php echo $company; ?>" readonly required>
+        <input type="text" class="form-control" name="txtfname"  placeholder="Enter  Material Name"  value="<?php echo $company; ?>" readonly required>
       </div>
       
       <div class="form-group">

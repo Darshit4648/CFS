@@ -73,7 +73,7 @@
 			</div>
 			<div class="form-group">
 				<label>Material Name:</label>
-				<input type="text" class="form-control" name="txtmname" placeholder="Enter your Material Name" required>
+				<input type="text" class="form-control" name="txtmname" placeholder="Enter Material Name" required>
 			</div>
 			
 			<div class="form-group">
@@ -83,11 +83,11 @@
 
 			<div class="form-group">
 				<label>Unit Price (per Bag):</label>
-				<input type="text" class="form-control" id="uprice" onKeyUp="multiply()"  name="txtuprice" placeholder="Enter your Material Name" required>
+				<input type="text" class="form-control" id="uprice" onKeyUp="multiply()"  name="txtuprice" placeholder="Enter Material Name" required>
 			</div>
 			<div class="form-group">
 				<label>Total Price:</label>
-				<input type="text" class="form-control" id="tot" name="txttotprice" placeholder="Enter your Material Name" readonly  required>
+				<input type="text" class="form-control" id="tot" name="txttotprice" placeholder="Enter Material Name" readonly  required>
 			</div>
 
 			<div class="form-group" >

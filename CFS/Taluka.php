@@ -4,7 +4,7 @@
 <div class="container-fluid" >
 
 	<div class="jumbotron col-md-offset-3 col-md-6 col-md-offset-3" >
-	 <h3 class="col-md-offset-4">Add Districts</h3>
+	 <h3 class="col-md-offset-4">Add Taluka</h3>
 	<?php
                  if (isset($_GET["errr"]))
 				  {
