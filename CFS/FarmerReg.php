@@ -350,7 +350,6 @@ if(isset($_GET["er"]))
                 <label>password:</label>
                 <input type=password class="form-control" id="fpwd" name=txtpassword placeholder="Enter password" data-toggle="password" onchange="return ValidateFpwd(this)" required>
                  <span id="spnErrorFpwd" style="color: Red; display: none">*At least 1 lowercase alphabetical character,1 uppercase alphabetical character, 1 numeric character, one special character And string must be eight characters or longer </span>
-  
                 </div>
     
               </div>
@@ -384,7 +383,7 @@ if(isset($_GET["er"]))
 </div>
 </div>
 <script>
-      $('#refersh').click(function() {
+    $('#refersh').click(function() {
     $('#captcha_code').attr('src','capcha.php');
 });
    </script> 
