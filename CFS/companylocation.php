@@ -5,6 +5,7 @@
       $fcity=$_COOKIE["city"];
       
        $qry="SELECT * FROM company INNER JOIN    acceptreq ON acceptreq.c_id = company.c_id  where company.city='$fcity' && acceptreq.respondstatus='1' ";
+  
      // $qry="select * from company where city='$fcity'";
       $rs=mysqli_query($con,$qry);
      
@@ -16,7 +17,7 @@
   <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
 </head>
 <body>
-  <div id="map" style="height: 400px; width: 500px;">
+  <div id="map" style="height: 400px; width: 1000px; padding-bottom: 15px">
 </div>
 <script type="text/javascript">
     var locations = [

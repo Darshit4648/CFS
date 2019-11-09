@@ -1,7 +1,7 @@
 <?php
 include('connect.php');
 $data = $_GET['datavalue'];
-$c_id=$_COOKIE["c_id"];
+//$c_id=$_COOKIE["c_id"];
  $qry="select * from totalproduction where f_id='$data'";
  $rs=mysqli_query($con,$qry);
 

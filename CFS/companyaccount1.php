@@ -2,7 +2,7 @@
 include('connect.php');
 $data = $_GET['datavalue'];
 //echo $data;
-$c_id=$_COOKIE["c_id"];
+//$c_id=$_COOKIE["c_id"];
 $sql = "SELECT farmer.harvestingprice,acceptreq.preagreedprice,rawmaterial.totprice FROM farmer INNER JOIN 	acceptreq ON acceptreq.f_id = farmer.f_id INNER JOIN rawmaterial ON rawmaterial.f_id=farmer.f_id where rawmaterial.f_id='$data'";
 
 

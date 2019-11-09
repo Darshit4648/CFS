@@ -3,8 +3,10 @@
      include("header.php");
       $city=$_COOKIE["city"];
       $c_id=$_COOKIE["c_id"];
+     
       $qry="SELECT * FROM farmer INNER JOIN    acceptreq ON acceptreq.f_id = farmer.f_id  where farmer.city='$city' && acceptreq.respondstatus='1' ";
       $rs=mysqli_query($con,$qry);  
+      
 ?>
 
  <html>

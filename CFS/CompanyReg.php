@@ -92,58 +92,7 @@
 });
 </script>
 
-<script type="text/javascript">
 
-  function change_district()
-  {
-    var id =$('#districtID').val();
-
-
-    var request = $.ajax({
-      url: "FarmerReg1.php",
-      type: "GET",
-      data: {district : id},
-      dataType: "html"
-    });
-
-    request.done(function(msg) {
-      $("#talukaID").html("");
-      $("#talukaID").html(msg);        
-    });
-
-    request.fail(function(jqXHR, textStatus) {
-      alert( "Request failed: " + textStatus );
-    });
-  }
-
-
-
-  function change_village()
-  {
-    var tid =$('#talukaID').val();
-    var did =$('#districtID').val();
-    
-
-    var request = $.ajax({
-      url: "talukaajax.php",
-      type: "GET",
-      data: {taluka : tid,district:did},
-      dataType: "html"
-    });
-   //alert(tid);
-
-    request.done(function(msg) {
-      $("#villageID").html("");
-      $("#villageID").html(msg);        
-    });
-
-    request.fail(function(jqXHR, textStatus) {
-      alert( "Request failed: " + textStatus );
-    });
-  }
-
-   
-</script>
 <script>
   function ValidateCname() {
         var isValid = false;
@@ -331,7 +280,7 @@ if(isset($_GET["er"]))
               </div>
                
               <div class="form-row"> 
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-6">
         <label>City:</label>
         <select class="form-control"  id="districtID" name="txtcity" onchange="change_district()" required>
           <option selected value="0">select</option>
@@ -349,37 +298,7 @@ if(isset($_GET["er"]))
         </select>
       </div>
 
-       <div class="form-group col-md-4">
-      <label>Taluka:</label>
-       <select class="form-control" id="talukaID" name="txttaluka" onchange="change_village()" required>
-         <option value="">Select</option>
-       </select>
-      </div>
-    
-    <div class="form-group col-md-4">
-      <label>Villages:</label>
-       <select class="form-control" id="villageID" name="txtvillage" required>
-         <option value="">Select</option>
-       </select>
-      </div>
-         </div>
-               <input type="hidden" name="lat" id="latclicked" value="">
-               <input type="hidden" name="long" id="longclicked" value=""> 
-             
-          <div>
-            <div id="map" class="form-control"  style="height: 300px;width:750px"></div>
-        </div>
-        <br>
-           
-                <div class="form-group">
-            <label>Address:</label>
-            <textarea type=text class="form-control" name="txtaddress" id="caddress" placeholder="Enter Address" minlength="3" onchange="return ValidateCaddress(this)" required></textarea>  
-             <div class="form-row">
-            <span id="spnErrorCaddress" style="color: Red; display: none">*Valid characters: Numbers only, 10 Digits are allowed And Number is an Indian Number allowed.</span>
-           </div>
-                </div>
-                
-                   <div class="form-row">
+          
                  <div class="form-group col-md-6">
             <label>Mobile Number:</label>
             <input type=text  class="form-control" name=txtmobno id="phnid"  placeholder="Enter mobile Number" onchange="return ValidateCphn(this)" onblur=" Mobnochk()" maxlength="10" required >
@@ -392,13 +311,32 @@ if(isset($_GET["er"]))
                 
                 <div class="form-group col-md-6">
                     <label>Email:</label>
-                <input type=text  class="form-control" name=txtemail id="emailid" placeholder="Enter Email" onblur=" Emailchk()" required>
+                <input type=email  class="form-control" name=txtemail id="emailid" placeholder="Enter Email" onblur=" Emailchk()" required>
                 <div class="form-row">
                  <span id="spnErrorEmail" style="color: Red; display: none">*Valid Email Address.</span>
                 </div>
                         </div>
-                        </div>
+                        <div class="form-group  col-md-6">
+            <label>Address:</label>
+            <textarea type=text class="form-control" name="txtaddress" id="caddress" placeholder="Enter Address" minlength="3" onchange="return ValidateCaddress(this)" required></textarea>  
+             <div class="form-row">
+            <span id="spnErrorCaddress" style="color: Red; display: none">*Valid characters: Numbers only, 10 Digits are allowed And Number is an Indian Number allowed.</span>
+           </div>
+                </div>
                         
+</div>
+       
+               <input type="hidden" name="lat" id="latclicked" value="">
+               <input type="hidden" name="long" id="longclicked" value=""> 
+             
+          <div>
+            <div id="map" class="form-control"  style="height: 300px;width:750px"></div>
+        </div>
+        <br>
+           
+                
+                
+                   
                         <div class="form-row">
                         <div class="form-group col-md-6">
                     <label>Username:</label>

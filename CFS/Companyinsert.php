@@ -13,14 +13,13 @@
         $email=$_POST["txtemail"];
         $username=$_POST["txtusername"];
         $password=$_POST["txtpassword"];
-        $taluka=$_POST["txttaluka"];
-        $village=$_POST["txtvillage"];
+        
 
                                                                                                         
 
                  if($captcha == $companycaptcha)
                  {      
-                        $qry="insert into company(companyname,companysname,city,taluka,village,latitude,longitude,address,mobno,email,username,password)values('$cname','$sname','$city','$taluka','$village','$latitude','$longitude','$address','$mobno','$email','$username','$password')";
+                        $qry="insert into company(companyname,companysname,city,latitude,longitude,address,mobno,email,username,password)values('$cname','$sname','$city','$latitude','$longitude','$address','$mobno','$email','$username','$password')";
 
                   if (mysqli_query($con, $qry)) {
                        echo "New record created successfully";

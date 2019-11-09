@@ -31,6 +31,7 @@
            {
                $data1=mysqli_fetch_assoc($rs3);
                 $mail1=$data1["email"]; 
+                echo $mail1;
                     $sdate=substr($data1["sdate"], 8,2)."-".substr($data1["sdate"], 5,2)."-".substr($data1["sdate"], 0,4);
                     $cname=$data1["companyname"];
 

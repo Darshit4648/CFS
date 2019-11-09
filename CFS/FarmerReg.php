@@ -127,6 +127,7 @@
         isValid = regex.test(document.getElementById("fnameid").value);
         document.getElementById("spnErrorName").style.display = !isValid ? "block" : "none";
         return isValid;
+
     }
 
      function ValidateFarea() {
