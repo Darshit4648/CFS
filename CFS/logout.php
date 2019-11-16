@@ -22,10 +22,5 @@
 		header("location:login.php?var=1");
 	}
 
-//    else if(isset($_COOKIE["login1"]))
-//	   {
-//			
-	//	   header("location:doctorlogin.php?var=1");
-//	   }
 
 ?>

@@ -10,7 +10,7 @@
       $qry="update farmer set fname='$fname' , city='$city', mobno='$mobno' , uname='$uname'  where f_id='$f_id'";
       $rs=mysqli_query($con,$qry);
 
-       echo $qry;
+       
 
        if (mysqli_query($con, $qry)) {
                echo "Record successfully updated ";
